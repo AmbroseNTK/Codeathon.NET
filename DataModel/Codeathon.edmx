@@ -1,0 +1,859 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Codeathon.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CodeathonStoreContainer">
+    <EntitySet Name="Users" EntityType="Codeathon.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profiles" EntityType="Codeathon.Store.Profiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="Codeathon.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Challenges" EntityType="Codeathon.Store.Challenges" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestCases" EntityType="Codeathon.Store.TestCases" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChallengeResults" EntityType="Codeathon.Store.ChallengeResults" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PLanguages" EntityType="Codeathon.Store.PLanguages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="Codeathon.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Competitions" EntityType="Codeathon.Store.Competitions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompetitionChallenges" EntityType="Codeathon.Store.CompetitionChallenges" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Logs" EntityType="Codeathon.Store.Logs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompetitionUser" EntityType="Codeathon.Store.CompetitionUser" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserProfile" Association="Codeathon.Store.UserProfile">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Profile" EntitySet="Profiles" />
+    </AssociationSet>
+    <AssociationSet Name="PLanguageChallengeResult" Association="Codeathon.Store.PLanguageChallengeResult">
+      <End Role="PLanguage" EntitySet="PLanguages" />
+      <End Role="ChallengeResult" EntitySet="ChallengeResults" />
+    </AssociationSet>
+    <AssociationSet Name="UserChallengeResult" Association="Codeathon.Store.UserChallengeResult">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ChallengeResult" EntitySet="ChallengeResults" />
+    </AssociationSet>
+    <AssociationSet Name="UserCategory" Association="Codeathon.Store.UserCategory">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="RoleUser" Association="Codeathon.Store.RoleUser">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserCompetition" Association="Codeathon.Store.UserCompetition">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Competition" EntitySet="Competitions" />
+    </AssociationSet>
+    <AssociationSet Name="CompetitionCompetitionChallenge" Association="Codeathon.Store.CompetitionCompetitionChallenge">
+      <End Role="Competition" EntitySet="Competitions" />
+      <End Role="CompetitionChallenge" EntitySet="CompetitionChallenges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompetitionUser_Competition" Association="Codeathon.Store.FK_CompetitionUser_Competition">
+      <End Role="Competition" EntitySet="Competitions" />
+      <End Role="CompetitionUser" EntitySet="CompetitionUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompetitionUser_User" Association="Codeathon.Store.FK_CompetitionUser_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CompetitionUser" EntitySet="CompetitionUser" />
+    </AssociationSet>
+    <AssociationSet Name="UserChallenge" Association="Codeathon.Store.UserChallenge">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Challenge" EntitySet="Challenges" />
+    </AssociationSet>
+    <AssociationSet Name="ChallengeChallengeResult" Association="Codeathon.Store.ChallengeChallengeResult">
+      <End Role="Challenge" EntitySet="Challenges" />
+      <End Role="ChallengeResult" EntitySet="ChallengeResults" />
+    </AssociationSet>
+    <AssociationSet Name="ChallengeCompetitionChallenge" Association="Codeathon.Store.ChallengeCompetitionChallenge">
+      <End Role="Challenge" EntitySet="Challenges" />
+      <End Role="CompetitionChallenge" EntitySet="CompetitionChallenges" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryChallenge" Association="Codeathon.Store.CategoryChallenge">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Challenge" EntitySet="Challenges" />
+    </AssociationSet>
+    <AssociationSet Name="UserLog" Association="Codeathon.Store.UserLog">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Log" EntitySet="Logs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HashPassword" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Profiles_Id" Type="int" Nullable="false" />
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Avatar" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CoverImage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_UID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Challenges">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+    <Property Name="IsPublic" Type="bit" Nullable="false" />
+    <Property Name="Owner_UID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Category_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TestCases">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Input" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ExpectedOutput" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AllowView" Type="bit" Nullable="false" />
+    <Property Name="Timeout" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChallengeResults">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ExecuteTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PLanguage_Id" Type="int" Nullable="false" />
+    <Property Name="User_UID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Challenge_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PLanguages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Version" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Competitions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CoverImage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MedalIcon" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+    <Property Name="DurationHours" Type="int" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+    <Property Name="Owner_UID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompetitionChallenges">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Point" Type="int" Nullable="false" />
+    <Property Name="PrerequisiteId" Type="int" Nullable="true" />
+    <Property Name="Competition_Id" Type="int" Nullable="false" />
+    <Property Name="Challenge_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+    <Property Name="User_UID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompetitionUser">
+    <Key>
+      <PropertyRef Name="EnrolledCompetitions_Id" />
+      <PropertyRef Name="InvitedUsers_UID" />
+    </Key>
+    <Property Name="EnrolledCompetitions_Id" Type="int" Nullable="false" />
+    <Property Name="InvitedUsers_UID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="UserProfile">
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="*" />
+    <End Role="Profile" Type="Codeathon.Store.Profiles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Profiles_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PLanguageChallengeResult">
+    <End Role="PLanguage" Type="Codeathon.Store.PLanguages" Multiplicity="1" />
+    <End Role="ChallengeResult" Type="Codeathon.Store.ChallengeResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLanguage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallengeResult">
+        <PropertyRef Name="PLanguage_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserChallengeResult">
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
+    <End Role="ChallengeResult" Type="Codeathon.Store.ChallengeResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="ChallengeResult">
+        <PropertyRef Name="User_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCategory">
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
+    <End Role="Category" Type="Codeathon.Store.Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="User_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoleUser">
+    <End Role="Role" Type="Codeathon.Store.Roles" Multiplicity="1" />
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCompetition">
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
+    <End Role="Competition" Type="Codeathon.Store.Competitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Competition">
+        <PropertyRef Name="Owner_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompetitionCompetitionChallenge">
+    <End Role="Competition" Type="Codeathon.Store.Competitions" Multiplicity="1" />
+    <End Role="CompetitionChallenge" Type="Codeathon.Store.CompetitionChallenges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompetitionChallenge">
+        <PropertyRef Name="Competition_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserChallenge">
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
+    <End Role="Challenge" Type="Codeathon.Store.Challenges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Challenge">
+        <PropertyRef Name="Owner_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChallengeChallengeResult">
+    <End Role="Challenge" Type="Codeathon.Store.Challenges" Multiplicity="1" />
+    <End Role="ChallengeResult" Type="Codeathon.Store.ChallengeResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Challenge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallengeResult">
+        <PropertyRef Name="Challenge_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChallengeCompetitionChallenge">
+    <End Role="Challenge" Type="Codeathon.Store.Challenges" Multiplicity="1" />
+    <End Role="CompetitionChallenge" Type="Codeathon.Store.CompetitionChallenges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Challenge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompetitionChallenge">
+        <PropertyRef Name="Challenge_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryChallenge">
+    <End Role="Category" Type="Codeathon.Store.Categories" Multiplicity="1" />
+    <End Role="Challenge" Type="Codeathon.Store.Challenges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Challenge">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserLog">
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
+    <End Role="Log" Type="Codeathon.Store.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="User_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompetitionUser_Competition">
+    <End Role="Competition" Type="Codeathon.Store.Competitions" Multiplicity="1" />
+    <End Role="CompetitionUser" Type="Codeathon.Store.CompetitionUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompetitionUser">
+        <PropertyRef Name="EnrolledCompetitions_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompetitionUser_User">
+    <End Role="CompetitionUser" Type="Codeathon.Store.CompetitionUser" Multiplicity="*" />
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="CompetitionUser">
+        <PropertyRef Name="InvitedUsers_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Codeathon" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CodeathonContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Codeathon.User" />
+          <EntitySet Name="Profiles" EntityType="Codeathon.Profile" />
+          <EntitySet Name="Categories" EntityType="Codeathon.Category" />
+          <EntitySet Name="Challenges" EntityType="Codeathon.Challenge" />
+          <EntitySet Name="TestCases" EntityType="Codeathon.TestCase" />
+          <EntitySet Name="ChallengeResults" EntityType="Codeathon.ChallengeResult" />
+          <EntitySet Name="PLanguages" EntityType="Codeathon.PLanguage" />
+          <AssociationSet Name="UserProfile" Association="Codeathon.UserProfile">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="PLanguageChallengeResult" Association="Codeathon.PLanguageChallengeResult">
+            <End Role="PLanguage" EntitySet="PLanguages" />
+            <End Role="ChallengeResult" EntitySet="ChallengeResults" />
+          </AssociationSet>
+          <AssociationSet Name="UserChallengeResult" Association="Codeathon.UserChallengeResult">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ChallengeResult" EntitySet="ChallengeResults" />
+          </AssociationSet>
+          <AssociationSet Name="UserCategory" Association="Codeathon.UserCategory">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="Codeathon.Role" />
+          <AssociationSet Name="RoleUser" Association="Codeathon.RoleUser">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Competitions" EntityType="Codeathon.Competition" />
+          <AssociationSet Name="UserCompetition" Association="Codeathon.UserCompetition">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Competition" EntitySet="Competitions" />
+          </AssociationSet>
+          <EntitySet Name="CompetitionChallenges" EntityType="Codeathon.CompetitionChallenge" />
+          <AssociationSet Name="CompetitionCompetitionChallenge" Association="Codeathon.CompetitionCompetitionChallenge">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="CompetitionChallenge" EntitySet="CompetitionChallenges" />
+          </AssociationSet>
+          <AssociationSet Name="CompetitionUser" Association="Codeathon.CompetitionUser">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserChallenge" Association="Codeathon.UserChallenge">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Challenge" EntitySet="Challenges" />
+          </AssociationSet>
+          <AssociationSet Name="ChallengeChallengeResult" Association="Codeathon.ChallengeChallengeResult">
+            <End Role="Challenge" EntitySet="Challenges" />
+            <End Role="ChallengeResult" EntitySet="ChallengeResults" />
+          </AssociationSet>
+          <AssociationSet Name="ChallengeCompetitionChallenge" Association="Codeathon.ChallengeCompetitionChallenge">
+            <End Role="Challenge" EntitySet="Challenges" />
+            <End Role="CompetitionChallenge" EntitySet="CompetitionChallenges" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryChallenge" Association="Codeathon.CategoryChallenge">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Challenge" EntitySet="Challenges" />
+          </AssociationSet>
+          <EntitySet Name="Logs" EntityType="Codeathon.Log" />
+          <AssociationSet Name="UserLog" Association="Codeathon.UserLog">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="HashPassword" Type="String" Nullable="false" />
+          <NavigationProperty Name="Profiles" Relationship="Codeathon.UserProfile" FromRole="User" ToRole="Profile" />
+          <NavigationProperty Name="ChallengeResults" Relationship="Codeathon.UserChallengeResult" FromRole="User" ToRole="ChallengeResult" />
+          <NavigationProperty Name="Categories" Relationship="Codeathon.UserCategory" FromRole="User" ToRole="Category" />
+          <NavigationProperty Name="Role" Relationship="Codeathon.RoleUser" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Competitions" Relationship="Codeathon.UserCompetition" FromRole="User" ToRole="Competition" />
+          <NavigationProperty Name="EnrolledCompetitions" Relationship="Codeathon.CompetitionUser" FromRole="User" ToRole="Competition" />
+          <NavigationProperty Name="Challenges" Relationship="Codeathon.UserChallenge" FromRole="User" ToRole="Challenge" />
+          <NavigationProperty Name="Logs" Relationship="Codeathon.UserLog" FromRole="User" ToRole="Log" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
+          <Property Name="Avatar" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Codeathon.UserProfile" FromRole="Profile" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="CoverImage" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Codeathon.UserCategory" FromRole="Category" ToRole="User" />
+          <NavigationProperty Name="Challenges" Relationship="Codeathon.CategoryChallenge" FromRole="Category" ToRole="Challenge" />
+        </EntityType>
+        <EntityType Name="Challenge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Name" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="ShortDescription" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" />
+          <Property Name="IsPublic" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="Codeathon.UserChallenge" FromRole="Challenge" ToRole="User" />
+          <NavigationProperty Name="ChallengeResults" Relationship="Codeathon.ChallengeChallengeResult" FromRole="Challenge" ToRole="ChallengeResult" />
+          <NavigationProperty Name="CompetitionChallenges" Relationship="Codeathon.ChallengeCompetitionChallenge" FromRole="Challenge" ToRole="CompetitionChallenge" />
+          <NavigationProperty Name="Category" Relationship="Codeathon.CategoryChallenge" FromRole="Challenge" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="TestCase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Input" Type="String" Nullable="false" />
+          <Property Name="ExpectedOutput" Type="String" Nullable="false" />
+          <Property Name="AllowView" Type="Boolean" Nullable="false" />
+          <Property Name="Timeout" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChallengeResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SourceCode" Type="String" Nullable="false" />
+          <Property Name="ExecuteTime" Type="String" Nullable="false" />
+          <NavigationProperty Name="PLanguage" Relationship="Codeathon.PLanguageChallengeResult" FromRole="ChallengeResult" ToRole="PLanguage" />
+          <NavigationProperty Name="User" Relationship="Codeathon.UserChallengeResult" FromRole="ChallengeResult" ToRole="User" />
+          <NavigationProperty Name="Challenge" Relationship="Codeathon.ChallengeChallengeResult" FromRole="ChallengeResult" ToRole="Challenge" />
+        </EntityType>
+        <EntityType Name="PLanguage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Version" Type="String" Nullable="false" />
+          <NavigationProperty Name="ChallengeResults" Relationship="Codeathon.PLanguageChallengeResult" FromRole="PLanguage" ToRole="ChallengeResult" />
+        </EntityType>
+        <Association Name="UserProfile">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.Profile" Role="Profile" Multiplicity="1" />
+        </Association>
+        <Association Name="PLanguageChallengeResult">
+          <End Type="Codeathon.PLanguage" Role="PLanguage" Multiplicity="1" />
+          <End Type="Codeathon.ChallengeResult" Role="ChallengeResult" Multiplicity="*" />
+        </Association>
+        <Association Name="UserChallengeResult">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.ChallengeResult" Role="ChallengeResult" Multiplicity="*" />
+        </Association>
+        <Association Name="UserCategory">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Users" Relationship="Codeathon.RoleUser" FromRole="Role" ToRole="User" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="RoleUser">
+          <End Type="Codeathon.Role" Role="Role" Multiplicity="1" />
+          <End Type="Codeathon.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="ShortDescription" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="CoverImage" Type="String" Nullable="false" />
+          <Property Name="MedalIcon" Type="String" Nullable="false" />
+          <Property Name="ExpiredDate" Type="DateTime" Nullable="false" />
+          <Property Name="DurationHours" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="Codeathon.UserCompetition" FromRole="Competition" ToRole="User" />
+          <NavigationProperty Name="CompetitionChallenges" Relationship="Codeathon.CompetitionCompetitionChallenge" FromRole="Competition" ToRole="CompetitionChallenge" />
+          <NavigationProperty Name="InvitedUsers" Relationship="Codeathon.CompetitionUser" FromRole="Competition" ToRole="User" />
+        </EntityType>
+        <Association Name="UserCompetition">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.Competition" Role="Competition" Multiplicity="*" />
+        </Association>
+        <EntityType Name="CompetitionChallenge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Point" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Competition" Relationship="Codeathon.CompetitionCompetitionChallenge" FromRole="CompetitionChallenge" ToRole="Competition" />
+          <Property Name="PrerequisiteId" Type="Int32" annotation:StoreGeneratedPattern="None" Nullable="true" />
+          <NavigationProperty Name="Challenge" Relationship="Codeathon.ChallengeCompetitionChallenge" FromRole="CompetitionChallenge" ToRole="Challenge" />
+        </EntityType>
+        <Association Name="CompetitionCompetitionChallenge">
+          <End Type="Codeathon.Competition" Role="Competition" Multiplicity="1" />
+          <End Type="Codeathon.CompetitionChallenge" Role="CompetitionChallenge" Multiplicity="*" />
+        </Association>
+        <Association Name="CompetitionUser">
+          <End Type="Codeathon.Competition" Role="Competition" Multiplicity="*" />
+          <End Type="Codeathon.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserChallenge">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.Challenge" Role="Challenge" Multiplicity="*" />
+        </Association>
+        <Association Name="ChallengeChallengeResult">
+          <End Type="Codeathon.Challenge" Role="Challenge" Multiplicity="1" />
+          <End Type="Codeathon.ChallengeResult" Role="ChallengeResult" Multiplicity="*" />
+        </Association>
+        <Association Name="ChallengeCompetitionChallenge">
+          <End Type="Codeathon.Challenge" Role="Challenge" Multiplicity="1" />
+          <End Type="Codeathon.CompetitionChallenge" Role="CompetitionChallenge" Multiplicity="*" />
+        </Association>
+        <Association Name="CategoryChallenge">
+          <End Type="Codeathon.Category" Role="Category" Multiplicity="1" />
+          <End Type="Codeathon.Challenge" Role="Challenge" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Codeathon.UserLog" FromRole="Log" ToRole="User" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="UserLog">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.Log" Role="Log" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CodeathonStoreContainer" CdmEntityContainer="CodeathonContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="HashPassword" ColumnName="HashPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Profile)">
+        <MappingFragment StoreEntitySet="Profiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Challenges">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Challenge)">
+        <MappingFragment StoreEntitySet="Challenges">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestCases">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.TestCase)">
+        <MappingFragment StoreEntitySet="TestCases">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Input" ColumnName="Input" />
+          <ScalarProperty Name="ExpectedOutput" ColumnName="ExpectedOutput" />
+          <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+          <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChallengeResults">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.ChallengeResult)">
+        <MappingFragment StoreEntitySet="ChallengeResults">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SourceCode" ColumnName="SourceCode" />
+          <ScalarProperty Name="ExecuteTime" ColumnName="ExecuteTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLanguages">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.PLanguage)">
+        <MappingFragment StoreEntitySet="PLanguages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Role)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Competitions">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Competition)">
+        <MappingFragment StoreEntitySet="Competitions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+          <ScalarProperty Name="MedalIcon" ColumnName="MedalIcon" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="DurationHours" ColumnName="DurationHours" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompetitionChallenges">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.CompetitionChallenge)">
+        <MappingFragment StoreEntitySet="CompetitionChallenges">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="PrerequisiteId" ColumnName="PrerequisiteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Log)">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserProfile" TypeName="Codeathon.UserProfile" StoreEntitySet="Users">
+      <EndProperty Name="Profile">
+        <ScalarProperty Name="Id" ColumnName="Profiles_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="UID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PLanguageChallengeResult" TypeName="Codeathon.PLanguageChallengeResult" StoreEntitySet="ChallengeResults">
+      <EndProperty Name="PLanguage">
+        <ScalarProperty Name="Id" ColumnName="PLanguage_Id" />
+      </EndProperty>
+      <EndProperty Name="ChallengeResult">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserChallengeResult" TypeName="Codeathon.UserChallengeResult" StoreEntitySet="ChallengeResults">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="User_UID" />
+      </EndProperty>
+      <EndProperty Name="ChallengeResult">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCategory" TypeName="Codeathon.UserCategory" StoreEntitySet="Categories">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="User_UID" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoleUser" TypeName="Codeathon.RoleUser" StoreEntitySet="Users">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Id" ColumnName="Role_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="UID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCompetition" TypeName="Codeathon.UserCompetition" StoreEntitySet="Competitions">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="Owner_UID" />
+      </EndProperty>
+      <EndProperty Name="Competition">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CompetitionCompetitionChallenge" TypeName="Codeathon.CompetitionCompetitionChallenge" StoreEntitySet="CompetitionChallenges">
+      <EndProperty Name="Competition">
+        <ScalarProperty Name="Id" ColumnName="Competition_Id" />
+      </EndProperty>
+      <EndProperty Name="CompetitionChallenge">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CompetitionUser" TypeName="Codeathon.CompetitionUser" StoreEntitySet="CompetitionUser">
+      <EndProperty Name="Competition">
+        <ScalarProperty Name="Id" ColumnName="EnrolledCompetitions_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="InvitedUsers_UID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserChallenge" TypeName="Codeathon.UserChallenge" StoreEntitySet="Challenges">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="Owner_UID" />
+      </EndProperty>
+      <EndProperty Name="Challenge">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ChallengeChallengeResult" TypeName="Codeathon.ChallengeChallengeResult" StoreEntitySet="ChallengeResults">
+      <EndProperty Name="Challenge">
+        <ScalarProperty Name="Id" ColumnName="Challenge_Id" />
+      </EndProperty>
+      <EndProperty Name="ChallengeResult">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ChallengeCompetitionChallenge" TypeName="Codeathon.ChallengeCompetitionChallenge" StoreEntitySet="CompetitionChallenges">
+      <EndProperty Name="Challenge">
+        <ScalarProperty Name="Id" ColumnName="Challenge_Id" />
+      </EndProperty>
+      <EndProperty Name="CompetitionChallenge">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CategoryChallenge" TypeName="Codeathon.CategoryChallenge" StoreEntitySet="Challenges">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Category_Id" />
+      </EndProperty>
+      <EndProperty Name="Challenge">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserLog" TypeName="Codeathon.UserLog" StoreEntitySet="Logs">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="User_UID" />
+      </EndProperty>
+      <EndProperty Name="Log">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
