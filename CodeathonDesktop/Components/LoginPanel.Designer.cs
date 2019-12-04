@@ -46,6 +46,11 @@
             this.tbRegisPassword = new DevExpress.XtraEditors.TextEdit();
             this.tbRegisEmail = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.btChooseAvatar = new DevExpress.XtraEditors.SimpleButton();
+            this.tbUsername = new DevExpress.XtraEditors.TextEdit();
+            this.tbPhoneNumber = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage1.SuspendLayout();
@@ -60,6 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbRetypedPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRegisPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRegisEmail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbUsername.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPhoneNumber.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPane1
@@ -198,6 +205,11 @@
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 30F),
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F)});
+            this.tablePanel2.Controls.Add(this.tbPhoneNumber);
+            this.tablePanel2.Controls.Add(this.tbUsername);
+            this.tablePanel2.Controls.Add(this.btChooseAvatar);
+            this.tablePanel2.Controls.Add(this.labelControl7);
+            this.tablePanel2.Controls.Add(this.labelControl6);
             this.tablePanel2.Controls.Add(this.tbRetypedPassword);
             this.tablePanel2.Controls.Add(this.labelControl5);
             this.tablePanel2.Controls.Add(this.labelControl3);
@@ -210,6 +222,9 @@
             this.tablePanel2.Name = "tablePanel2";
             this.tablePanel2.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 30F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 50F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 50F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 50F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 50F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 50F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 50F),
@@ -258,9 +273,9 @@
             // btRegister
             // 
             this.tablePanel2.SetColumn(this.btRegister, 2);
-            this.btRegister.Location = new System.Drawing.Point(732, 519);
+            this.btRegister.Location = new System.Drawing.Point(732, 894);
             this.btRegister.Name = "btRegister";
-            this.tablePanel2.SetRow(this.btRegister, 5);
+            this.tablePanel2.SetRow(this.btRegister, 8);
             this.btRegister.Size = new System.Drawing.Size(723, 57);
             this.btRegister.TabIndex = 4;
             this.btRegister.Text = "Register";
@@ -301,6 +316,63 @@
             this.labelControl4.TabIndex = 0;
             this.labelControl4.Text = "Email";
             // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Google Sans Display", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.tablePanel2.SetColumn(this.labelControl6, 1);
+            this.labelControl6.Location = new System.Drawing.Point(295, 483);
+            this.labelControl6.Name = "labelControl6";
+            this.tablePanel2.SetRow(this.labelControl6, 4);
+            this.labelControl6.Size = new System.Drawing.Size(421, 58);
+            this.labelControl6.TabIndex = 8;
+            this.labelControl6.Text = "User Name (Unique)";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Google Sans Display", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.tablePanel2.SetColumn(this.labelControl7, 1);
+            this.labelControl7.Location = new System.Drawing.Point(295, 608);
+            this.labelControl7.Name = "labelControl7";
+            this.tablePanel2.SetRow(this.labelControl7, 5);
+            this.labelControl7.Size = new System.Drawing.Size(307, 58);
+            this.labelControl7.TabIndex = 9;
+            this.labelControl7.Text = "Phone number";
+            // 
+            // btChooseAvatar
+            // 
+            this.tablePanel2.SetColumn(this.btChooseAvatar, 2);
+            this.btChooseAvatar.Location = new System.Drawing.Point(732, 734);
+            this.btChooseAvatar.Name = "btChooseAvatar";
+            this.tablePanel2.SetRow(this.btChooseAvatar, 6);
+            this.btChooseAvatar.Size = new System.Drawing.Size(723, 57);
+            this.btChooseAvatar.TabIndex = 10;
+            this.btChooseAvatar.Text = "Choose Avatar";
+            this.btChooseAvatar.Click += new System.EventHandler(this.BtChooseAvatar_Click);
+            // 
+            // tbUsername
+            // 
+            this.tablePanel2.SetColumn(this.tbUsername, 2);
+            this.tbUsername.Location = new System.Drawing.Point(732, 479);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Properties.Appearance.Font = new System.Drawing.Font("Google Sans Display", 12F);
+            this.tbUsername.Properties.Appearance.Options.UseFont = true;
+            this.tablePanel2.SetRow(this.tbUsername, 4);
+            this.tbUsername.Size = new System.Drawing.Size(723, 66);
+            this.tbUsername.TabIndex = 11;
+            // 
+            // tbPhoneNumber
+            // 
+            this.tablePanel2.SetColumn(this.tbPhoneNumber, 2);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(732, 604);
+            this.tbPhoneNumber.Name = "tbPhoneNumber";
+            this.tbPhoneNumber.Properties.Appearance.Font = new System.Drawing.Font("Google Sans Display", 12F);
+            this.tbPhoneNumber.Properties.Appearance.Options.UseFont = true;
+            this.tablePanel2.SetRow(this.tbPhoneNumber, 5);
+            this.tbPhoneNumber.Size = new System.Drawing.Size(723, 66);
+            this.tbPhoneNumber.TabIndex = 12;
+            // 
             // LoginPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 34F);
@@ -324,6 +396,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbRetypedPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRegisPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRegisEmail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbUsername.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPhoneNumber.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -348,5 +422,10 @@
         private DevExpress.XtraEditors.TextEdit tbRegisEmail;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraEditors.TextEdit tbPhoneNumber;
+        private DevExpress.XtraEditors.TextEdit tbUsername;
+        private DevExpress.XtraEditors.SimpleButton btChooseAvatar;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
     }
 }

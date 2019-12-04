@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/04/2019 11:35:13
+-- Date Created: 12/05/2019 01:43:14
 -- Generated from EDMX file: D:\Repos\DotNet\CodeathonDesktop\DataModel\Codeathon.edmx
 -- --------------------------------------------------
 
@@ -56,6 +56,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CategoryChallenge]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Challenges] DROP CONSTRAINT [FK_CategoryChallenge];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UserLog]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Logs] DROP CONSTRAINT [FK_UserLog];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -91,6 +94,9 @@ GO
 IF OBJECT_ID(N'[dbo].[CompetitionChallenges]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CompetitionChallenges];
 GO
+IF OBJECT_ID(N'[dbo].[Logs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Logs];
+GO
 IF OBJECT_ID(N'[dbo].[CompetitionUser]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CompetitionUser];
 GO
@@ -101,10 +107,10 @@ GO
 
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (
-    [UID] uniqueidentifier  NOT NULL,
+    [UID] bigint IDENTITY(1,1) NOT NULL,
     [Email] nvarchar(max)  NOT NULL,
     [HashPassword] nvarchar(max)  NOT NULL,
-    [Profiles_Id] int  NOT NULL,
+    [Profile_Id] int  NOT NULL,
     [Role_Id] int  NOT NULL
 );
 GO
@@ -112,6 +118,7 @@ GO
 -- Creating table 'Profiles'
 CREATE TABLE [dbo].[Profiles] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [Username] nvarchar(max)  NOT NULL,
     [PhoneNumber] nvarchar(max)  NOT NULL,
     [Avatar] nvarchar(max)  NOT NULL
 );
@@ -123,7 +130,7 @@ CREATE TABLE [dbo].[Categories] (
     [Name] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
     [CoverImage] nvarchar(max)  NOT NULL,
-    [User_UID] uniqueidentifier  NOT NULL
+    [User_UID] bigint  NOT NULL
 );
 GO
 
@@ -136,7 +143,7 @@ CREATE TABLE [dbo].[Challenges] (
     [Description] nvarchar(max)  NOT NULL,
     [LastUpdate] datetime  NOT NULL,
     [IsPublic] bit  NOT NULL,
-    [Owner_UID] uniqueidentifier  NOT NULL,
+    [Owner_UID] bigint  NOT NULL,
     [Category_Id] int  NOT NULL
 );
 GO
@@ -157,7 +164,7 @@ CREATE TABLE [dbo].[ChallengeResults] (
     [SourceCode] nvarchar(max)  NOT NULL,
     [ExecuteTime] nvarchar(max)  NOT NULL,
     [PLanguage_Id] int  NOT NULL,
-    [User_UID] uniqueidentifier  NOT NULL,
+    [User_UID] bigint  NOT NULL,
     [Challenge_Id] int  NOT NULL
 );
 GO
@@ -188,7 +195,7 @@ CREATE TABLE [dbo].[Competitions] (
     [ExpiredDate] datetime  NOT NULL,
     [DurationHours] int  NOT NULL,
     [LastUpdate] datetime  NOT NULL,
-    [Owner_UID] uniqueidentifier  NOT NULL
+    [Owner_UID] bigint  NOT NULL
 );
 GO
 
@@ -208,14 +215,14 @@ CREATE TABLE [dbo].[Logs] (
     [Title] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
     [Timestamp] datetime  NOT NULL,
-    [User_UID] uniqueidentifier  NOT NULL
+    [User_UID] bigint  NOT NULL
 );
 GO
 
 -- Creating table 'CompetitionUser'
 CREATE TABLE [dbo].[CompetitionUser] (
     [EnrolledCompetitions_Id] int  NOT NULL,
-    [InvitedUsers_UID] uniqueidentifier  NOT NULL
+    [InvitedUsers_UID] bigint  NOT NULL
 );
 GO
 
@@ -299,10 +306,10 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Profiles_Id] in table 'Users'
+-- Creating foreign key on [Profile_Id] in table 'Users'
 ALTER TABLE [dbo].[Users]
 ADD CONSTRAINT [FK_UserProfile]
-    FOREIGN KEY ([Profiles_Id])
+    FOREIGN KEY ([Profile_Id])
     REFERENCES [dbo].[Profiles]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -311,7 +318,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserProfile'
 CREATE INDEX [IX_FK_UserProfile]
 ON [dbo].[Users]
-    ([Profiles_Id]);
+    ([Profile_Id]);
 GO
 
 -- Creating foreign key on [PLanguage_Id] in table 'ChallengeResults'

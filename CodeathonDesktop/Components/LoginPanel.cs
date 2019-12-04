@@ -15,9 +15,13 @@ namespace CodeathonDesktop.Components
 {
     public partial class LoginPanel : DevExpress.XtraEditors.XtraUserControl
     {
+        OpenFileDialog ofd;
+        string avatar = "";
         public LoginPanel()
         {
             InitializeComponent();
+            ofd = new OpenFileDialog();
+            ofd.Title = "Select your avatar";
         }
 
         private void LabelControl1_Click(object sender, EventArgs e)
@@ -32,7 +36,20 @@ namespace CodeathonDesktop.Components
 
         private void BtRegister_Click(object sender, EventArgs e)
         {
-            Service<UserService>.Use().Register(tbRegisEmail.Text, tbRegisPassword.Text, tbRetypedPassword.Text);
+            Service<UserService>.Use().Register(tbRegisEmail.Text, tbRegisPassword.Text, tbRetypedPassword.Text, new Codeathon.DataModel.Profile()
+            {
+                Username = tbUsername.Text,
+                PhoneNumber = tbPhoneNumber.Text,
+                Avatar = avatar
+            });
+        }
+
+        private void BtChooseAvatar_Click(object sender, EventArgs e)
+        {
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                avatar = ofd.FileName.ImagePathToBase64();
+            }
         }
     }
 }

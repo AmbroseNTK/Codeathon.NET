@@ -79,10 +79,10 @@
     <Key>
       <PropertyRef Name="UID" />
     </Key>
-    <Property Name="UID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HashPassword" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Profiles_Id" Type="int" Nullable="false" />
+    <Property Name="Profile_Id" Type="int" Nullable="false" />
     <Property Name="Role_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Profiles">
@@ -90,6 +90,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Avatar" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
@@ -101,7 +102,7 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CoverImage" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="User_UID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="User_UID" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="Challenges">
     <Key>
@@ -114,7 +115,7 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastUpdate" Type="datetime" Nullable="false" />
     <Property Name="IsPublic" Type="bit" Nullable="false" />
-    <Property Name="Owner_UID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Owner_UID" Type="bigint" Nullable="false" />
     <Property Name="Category_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TestCases">
@@ -135,7 +136,7 @@
     <Property Name="SourceCode" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ExecuteTime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PLanguage_Id" Type="int" Nullable="false" />
-    <Property Name="User_UID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="User_UID" Type="bigint" Nullable="false" />
     <Property Name="Challenge_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PLanguages">
@@ -166,7 +167,7 @@
     <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
     <Property Name="DurationHours" Type="int" Nullable="false" />
     <Property Name="LastUpdate" Type="datetime" Nullable="false" />
-    <Property Name="Owner_UID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Owner_UID" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="CompetitionChallenges">
     <Key>
@@ -186,7 +187,7 @@
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Timestamp" Type="datetime" Nullable="false" />
-    <Property Name="User_UID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="User_UID" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="CompetitionUser">
     <Key>
@@ -194,7 +195,7 @@
       <PropertyRef Name="InvitedUsers_UID" />
     </Key>
     <Property Name="EnrolledCompetitions_Id" Type="int" Nullable="false" />
-    <Property Name="InvitedUsers_UID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InvitedUsers_UID" Type="bigint" Nullable="false" />
   </EntityType>
   <Association Name="UserProfile">
     <End Role="User" Type="Codeathon.Store.Users" Multiplicity="*" />
@@ -204,7 +205,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="User">
-        <PropertyRef Name="Profiles_Id" />
+        <PropertyRef Name="Profile_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -437,10 +438,10 @@
           <Key>
             <PropertyRef Name="UID" />
           </Key>
-          <Property Name="UID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" Nullable="false" />
           <Property Name="HashPassword" Type="String" Nullable="false" />
-          <NavigationProperty Name="Profiles" Relationship="Codeathon.UserProfile" FromRole="User" ToRole="Profile" />
+          <NavigationProperty Name="Profile" Relationship="Codeathon.UserProfile" FromRole="User" ToRole="Profile" />
           <NavigationProperty Name="ChallengeResults" Relationship="Codeathon.UserChallengeResult" FromRole="User" ToRole="ChallengeResult" />
           <NavigationProperty Name="Categories" Relationship="Codeathon.UserCategory" FromRole="User" ToRole="Category" />
           <NavigationProperty Name="Role" Relationship="Codeathon.RoleUser" FromRole="User" ToRole="Role" />
@@ -454,6 +455,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Username" Type="String" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" />
           <Property Name="Avatar" Type="String" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Codeathon.UserProfile" FromRole="Profile" ToRole="User" />
@@ -631,6 +633,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Profile)">
         <MappingFragment StoreEntitySet="Profiles">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Avatar" ColumnName="Avatar" />
         </MappingFragment>
@@ -732,7 +735,7 @@
     </EntitySetMapping>
     <AssociationSetMapping Name="UserProfile" TypeName="Codeathon.UserProfile" StoreEntitySet="Users">
       <EndProperty Name="Profile">
-        <ScalarProperty Name="Id" ColumnName="Profiles_Id" />
+        <ScalarProperty Name="Id" ColumnName="Profile_Id" />
       </EndProperty>
       <EndProperty Name="User">
         <ScalarProperty Name="UID" ColumnName="UID" />

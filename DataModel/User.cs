@@ -25,11 +25,11 @@ namespace Codeathon.DataModel
             this.Logs = new HashSet<Log>();
         }
     
-        public System.Guid UID { get; set; }
+        public long UID { get; set; }
         public string Email { get; set; }
         public string HashPassword { get; set; }
     
-        public virtual Profile Profiles { get; set; }
+        public virtual Profile Profile { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChallengeResult> ChallengeResults { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
