@@ -10,11 +10,10 @@
 namespace Codeathon.DataModel
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Log : SystemLog
+    public partial class CommentType
     {
-    
-        public virtual User User { get; set; }
+        public string Content { get; set; }
+        public System.DateTime Datetime { get; set; }
     }
 }

@@ -17,8 +17,9 @@ namespace Codeathon.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Challenge()
         {
-            this.ChallengeResults = new HashSet<ChallengeResult>();
+            this.ChallengeResults = new HashSet<Solution>();
             this.CompetitionChallenges = new HashSet<CompetitionChallenge>();
+            this.TestCases = new HashSet<TestCase>();
         }
     
         public int Id { get; set; }
@@ -31,9 +32,11 @@ namespace Codeathon.DataModel
     
         public virtual User Owner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChallengeResult> ChallengeResults { get; set; }
+        public virtual ICollection<Solution> ChallengeResults { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompetitionChallenge> CompetitionChallenges { get; set; }
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TestCase> TestCases { get; set; }
     }
 }

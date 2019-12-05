@@ -12,14 +12,11 @@ namespace Codeathon.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class ChallengeResult
+    public partial class SystemLog
     {
-        public int Id { get; set; }
-        public string SourceCode { get; set; }
-        public string ExecuteTime { get; set; }
-    
-        public virtual PLanguage PLanguage { get; set; }
-        public virtual User User { get; set; }
-        public virtual Challenge Challenge { get; set; }
+        public long Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Timestamp { get; set; }
     }
 }

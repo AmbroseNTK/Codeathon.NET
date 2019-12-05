@@ -17,7 +17,7 @@ namespace Codeathon.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PLanguage()
         {
-            this.ChallengeResults = new HashSet<ChallengeResult>();
+            this.Solutions = new HashSet<Solution>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace Codeathon.DataModel
         public string Version { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChallengeResult> ChallengeResults { get; set; }
+        public virtual ICollection<Solution> Solutions { get; set; }
     }
 }

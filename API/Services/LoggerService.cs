@@ -11,19 +11,21 @@ using System.Data.Entity;
 
 namespace Codeathon.API.Services
 {
-    public class LoggerService : SimpleCRUD<long, Log>
+    public class LoggerService : SimpleCRUD<long, SystemLog>
     {
         protected override DbContext GetContext()
         {
             return Service<CodeathonContainer>.Use();
         }
 
-        protected override DbSet<Log> GetDbSet()
-        {
-            return Service<CodeathonContainer>.Use().Logs;
+        protected override DbSet<SystemLog> GetDbSet()
+        { 
+            SystemLog log = new Log();
+            
+            return Service<CodeathonContainer>.Use().SystemLogs;
         }
 
-        protected override long GetKey(Log entity)
+        protected override long GetKey(SystemLog entity)
         {
             return entity.Id;
         }

@@ -56,9 +56,6 @@
     <Compile Include="Challenge.cs">
       <DependentUpon>Codeathon.tt</DependentUpon>
     </Compile>
-    <Compile Include="ChallengeResult.cs">
-      <DependentUpon>Codeathon.tt</DependentUpon>
-    </Compile>
     <Compile Include="Codeathon.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,6 +70,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Codeathon.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Comment.cs">
+      <DependentUpon>Codeathon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommentType.cs">
+      <DependentUpon>Codeathon.tt</DependentUpon>
     </Compile>
     <Compile Include="Competition.cs">
       <DependentUpon>Codeathon.tt</DependentUpon>
@@ -91,6 +94,15 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
+      <DependentUpon>Codeathon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Solution.cs">
+      <DependentUpon>Codeathon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SolutionReview.cs">
+      <DependentUpon>Codeathon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemLog.cs">
       <DependentUpon>Codeathon.tt</DependentUpon>
     </Compile>
     <Compile Include="TestCase.cs">

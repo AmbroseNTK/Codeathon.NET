@@ -12,21 +12,21 @@ namespace Codeathon.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class TestCase
+    public partial class Comment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TestCase()
+        public Comment()
         {
-            this.Challenges = new HashSet<Challenge>();
+            this.Parent = new HashSet<Comment>();
         }
     
-        public int Id { get; set; }
-        public string Input { get; set; }
-        public string ExpectedOutput { get; set; }
-        public bool AllowView { get; set; }
-        public int Timeout { get; set; }
+        public long Id { get; set; }
+        public string Content { get; set; }
+        public System.DateTime Datetime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Challenge> Challenges { get; set; }
+        public virtual ICollection<Comment> Parent { get; set; }
+        public virtual Comment Replies { get; set; }
+        public virtual Solution Solution { get; set; }
     }
 }

@@ -25,16 +25,18 @@ namespace Codeathon.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Profile> Profiles { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Challenge> Challenges { get; set; }
         public virtual DbSet<TestCase> TestCases { get; set; }
-        public virtual DbSet<ChallengeResult> ChallengeResults { get; set; }
+        public virtual DbSet<Solution> Solutions { get; set; }
         public virtual DbSet<PLanguage> PLanguages { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Competition> Competitions { get; set; }
         public virtual DbSet<CompetitionChallenge> CompetitionChallenges { get; set; }
-        public virtual DbSet<Log> Logs { get; set; }
+        public virtual DbSet<SolutionReview> SolutionReviews { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<SystemLog> SystemLogs { get; set; }
     }
 }

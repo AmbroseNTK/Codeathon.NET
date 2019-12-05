@@ -6,29 +6,25 @@
     <edmx:StorageModels>
     <Schema Namespace="Codeathon.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="CodeathonStoreContainer">
-    <EntitySet Name="Users" EntityType="Codeathon.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Profiles" EntityType="Codeathon.Store.Profiles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Categories" EntityType="Codeathon.Store.Categories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Challenges" EntityType="Codeathon.Store.Challenges" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TestCases" EntityType="Codeathon.Store.TestCases" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ChallengeResults" EntityType="Codeathon.Store.ChallengeResults" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Solutions" EntityType="Codeathon.Store.Solutions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PLanguages" EntityType="Codeathon.Store.PLanguages" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Roles" EntityType="Codeathon.Store.Roles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Competitions" EntityType="Codeathon.Store.Competitions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CompetitionChallenges" EntityType="Codeathon.Store.CompetitionChallenges" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Logs" EntityType="Codeathon.Store.Logs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SolutionReviews" EntityType="Codeathon.Store.SolutionReviews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="Codeathon.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="Codeathon.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemLogs" EntityType="Codeathon.Store.SystemLogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemLogs_Log" EntityType="Codeathon.Store.SystemLogs_Log" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CompetitionUser" EntityType="Codeathon.Store.CompetitionUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestCaseChallenge" EntityType="Codeathon.Store.TestCaseChallenge" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserProfile" Association="Codeathon.Store.UserProfile">
       <End Role="User" EntitySet="Users" />
       <End Role="Profile" EntitySet="Profiles" />
-    </AssociationSet>
-    <AssociationSet Name="PLanguageChallengeResult" Association="Codeathon.Store.PLanguageChallengeResult">
-      <End Role="PLanguage" EntitySet="PLanguages" />
-      <End Role="ChallengeResult" EntitySet="ChallengeResults" />
-    </AssociationSet>
-    <AssociationSet Name="UserChallengeResult" Association="Codeathon.Store.UserChallengeResult">
-      <End Role="User" EntitySet="Users" />
-      <End Role="ChallengeResult" EntitySet="ChallengeResults" />
     </AssociationSet>
     <AssociationSet Name="UserCategory" Association="Codeathon.Store.UserCategory">
       <End Role="User" EntitySet="Users" />
@@ -60,7 +56,7 @@
     </AssociationSet>
     <AssociationSet Name="ChallengeChallengeResult" Association="Codeathon.Store.ChallengeChallengeResult">
       <End Role="Challenge" EntitySet="Challenges" />
-      <End Role="ChallengeResult" EntitySet="ChallengeResults" />
+      <End Role="ChallengeResult" EntitySet="Solutions" />
     </AssociationSet>
     <AssociationSet Name="ChallengeCompetitionChallenge" Association="Codeathon.Store.ChallengeCompetitionChallenge">
       <End Role="Challenge" EntitySet="Challenges" />
@@ -72,19 +68,45 @@
     </AssociationSet>
     <AssociationSet Name="UserLog" Association="Codeathon.Store.UserLog">
       <End Role="User" EntitySet="Users" />
-      <End Role="Log" EntitySet="Logs" />
+      <End Role="Log" EntitySet="SystemLogs_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestCaseChallenge_TestCase" Association="Codeathon.Store.FK_TestCaseChallenge_TestCase">
+      <End Role="TestCase" EntitySet="TestCases" />
+      <End Role="TestCaseChallenge" EntitySet="TestCaseChallenge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestCaseChallenge_Challenge" Association="Codeathon.Store.FK_TestCaseChallenge_Challenge">
+      <End Role="Challenge" EntitySet="Challenges" />
+      <End Role="TestCaseChallenge" EntitySet="TestCaseChallenge" />
+    </AssociationSet>
+    <AssociationSet Name="UserSolutionReview" Association="Codeathon.Store.UserSolutionReview">
+      <End Role="User" EntitySet="Users" />
+      <End Role="SolutionReview" EntitySet="SolutionReviews" />
+    </AssociationSet>
+    <AssociationSet Name="CommentComment" Association="Codeathon.Store.CommentComment">
+      <End Role="Comment" EntitySet="Comments" />
+      <End Role="Replies" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="PLanguageSolution" Association="Codeathon.Store.PLanguageSolution">
+      <End Role="PLanguage" EntitySet="PLanguages" />
+      <End Role="Solution" EntitySet="Solutions" />
+    </AssociationSet>
+    <AssociationSet Name="UserSolution" Association="Codeathon.Store.UserSolution">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Solution" EntitySet="Solutions" />
+    </AssociationSet>
+    <AssociationSet Name="SolutionSolutionReview" Association="Codeathon.Store.SolutionSolutionReview">
+      <End Role="Solution" EntitySet="Solutions" />
+      <End Role="SolutionReview" EntitySet="SolutionReviews" />
+    </AssociationSet>
+    <AssociationSet Name="SolutionComment" Association="Codeathon.Store.SolutionComment">
+      <End Role="Solution" EntitySet="Solutions" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_inherits_SystemLog" Association="Codeathon.Store.FK_Log_inherits_SystemLog">
+      <End Role="SystemLog" EntitySet="SystemLogs" />
+      <End Role="Log" EntitySet="SystemLogs_Log" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="UID" />
-    </Key>
-    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="HashPassword" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Profile_Id" Type="int" Nullable="false" />
-    <Property Name="Role_Id" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Profiles">
     <Key>
       <PropertyRef Name="Id" />
@@ -128,16 +150,17 @@
     <Property Name="AllowView" Type="bit" Nullable="false" />
     <Property Name="Timeout" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="ChallengeResults">
+  <EntityType Name="Solutions">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SourceCode" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ExecuteTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Datetime" Type="datetime" Nullable="false" />
+    <Property Name="Challenge_Id" Type="int" Nullable="false" />
     <Property Name="PLanguage_Id" Type="int" Nullable="false" />
     <Property Name="User_UID" Type="bigint" Nullable="false" />
-    <Property Name="Challenge_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PLanguages">
     <Key>
@@ -179,14 +202,50 @@
     <Property Name="Competition_Id" Type="int" Nullable="false" />
     <Property Name="Challenge_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Logs">
+  <EntityType Name="SolutionReviews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtPoint" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AcademicPoint" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Author_UID" Type="bigint" Nullable="false" />
+    <Property Name="Solution_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Datetime" Type="datetime" Nullable="false" />
+    <Property Name="Replies_Id" Type="bigint" Nullable="false" />
+    <Property Name="Solution_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HashPassword" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Profile_Id" Type="int" Nullable="false" />
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemLogs">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+    <Property Name="Timestamp" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemLogs_Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
     <Property Name="User_UID" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="CompetitionUser">
@@ -197,6 +256,14 @@
     <Property Name="EnrolledCompetitions_Id" Type="int" Nullable="false" />
     <Property Name="InvitedUsers_UID" Type="bigint" Nullable="false" />
   </EntityType>
+  <EntityType Name="TestCaseChallenge">
+    <Key>
+      <PropertyRef Name="TestCases_Id" />
+      <PropertyRef Name="Challenges_Id" />
+    </Key>
+    <Property Name="TestCases_Id" Type="int" Nullable="false" />
+    <Property Name="Challenges_Id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="UserProfile">
     <End Role="User" Type="Codeathon.Store.Users" Multiplicity="*" />
     <End Role="Profile" Type="Codeathon.Store.Profiles" Multiplicity="1" />
@@ -206,30 +273,6 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="Profile_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PLanguageChallengeResult">
-    <End Role="PLanguage" Type="Codeathon.Store.PLanguages" Multiplicity="1" />
-    <End Role="ChallengeResult" Type="Codeathon.Store.ChallengeResults" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PLanguage">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ChallengeResult">
-        <PropertyRef Name="PLanguage_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserChallengeResult">
-    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
-    <End Role="ChallengeResult" Type="Codeathon.Store.ChallengeResults" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UID" />
-      </Principal>
-      <Dependent Role="ChallengeResult">
-        <PropertyRef Name="User_UID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -295,7 +338,7 @@
   </Association>
   <Association Name="ChallengeChallengeResult">
     <End Role="Challenge" Type="Codeathon.Store.Challenges" Multiplicity="1" />
-    <End Role="ChallengeResult" Type="Codeathon.Store.ChallengeResults" Multiplicity="*" />
+    <End Role="ChallengeResult" Type="Codeathon.Store.Solutions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Challenge">
         <PropertyRef Name="Id" />
@@ -331,13 +374,85 @@
   </Association>
   <Association Name="UserLog">
     <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
-    <End Role="Log" Type="Codeathon.Store.Logs" Multiplicity="*" />
+    <End Role="Log" Type="Codeathon.Store.SystemLogs_Log" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="UID" />
       </Principal>
       <Dependent Role="Log">
         <PropertyRef Name="User_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSolutionReview">
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
+    <End Role="SolutionReview" Type="Codeathon.Store.SolutionReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="SolutionReview">
+        <PropertyRef Name="Author_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentComment">
+    <End Role="Comment" Type="Codeathon.Store.Comments" Multiplicity="1" />
+    <End Role="Replies" Type="Codeathon.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Replies">
+        <PropertyRef Name="Replies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PLanguageSolution">
+    <End Role="PLanguage" Type="Codeathon.Store.PLanguages" Multiplicity="1" />
+    <End Role="Solution" Type="Codeathon.Store.Solutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLanguage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Solution">
+        <PropertyRef Name="PLanguage_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSolution">
+    <End Role="User" Type="Codeathon.Store.Users" Multiplicity="1" />
+    <End Role="Solution" Type="Codeathon.Store.Solutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Solution">
+        <PropertyRef Name="User_UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolutionSolutionReview">
+    <End Role="Solution" Type="Codeathon.Store.Solutions" Multiplicity="1" />
+    <End Role="SolutionReview" Type="Codeathon.Store.SolutionReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solution">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SolutionReview">
+        <PropertyRef Name="Solution_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolutionComment">
+    <End Role="Solution" Type="Codeathon.Store.Solutions" Multiplicity="1" />
+    <End Role="Comment" Type="Codeathon.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solution">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Solution_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -365,29 +480,58 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TestCaseChallenge_TestCase">
+    <End Role="TestCase" Type="Codeathon.Store.TestCases" Multiplicity="1" />
+    <End Role="TestCaseChallenge" Type="Codeathon.Store.TestCaseChallenge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestCase">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TestCaseChallenge">
+        <PropertyRef Name="TestCases_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestCaseChallenge_Challenge">
+    <End Role="TestCaseChallenge" Type="Codeathon.Store.TestCaseChallenge" Multiplicity="*" />
+    <End Role="Challenge" Type="Codeathon.Store.Challenges" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Challenge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TestCaseChallenge">
+        <PropertyRef Name="Challenges_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_inherits_SystemLog">
+    <End Role="SystemLog" Type="Codeathon.Store.SystemLogs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Log" Type="Codeathon.Store.SystemLogs_Log" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SystemLog">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Codeathon" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="CodeathonContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="Codeathon.User" />
           <EntitySet Name="Profiles" EntityType="Codeathon.Profile" />
           <EntitySet Name="Categories" EntityType="Codeathon.Category" />
           <EntitySet Name="Challenges" EntityType="Codeathon.Challenge" />
           <EntitySet Name="TestCases" EntityType="Codeathon.TestCase" />
-          <EntitySet Name="ChallengeResults" EntityType="Codeathon.ChallengeResult" />
+          <EntitySet Name="Solutions" EntityType="Codeathon.Solution" />
           <EntitySet Name="PLanguages" EntityType="Codeathon.PLanguage" />
           <AssociationSet Name="UserProfile" Association="Codeathon.UserProfile">
             <End Role="User" EntitySet="Users" />
             <End Role="Profile" EntitySet="Profiles" />
-          </AssociationSet>
-          <AssociationSet Name="PLanguageChallengeResult" Association="Codeathon.PLanguageChallengeResult">
-            <End Role="PLanguage" EntitySet="PLanguages" />
-            <End Role="ChallengeResult" EntitySet="ChallengeResults" />
-          </AssociationSet>
-          <AssociationSet Name="UserChallengeResult" Association="Codeathon.UserChallengeResult">
-            <End Role="User" EntitySet="Users" />
-            <End Role="ChallengeResult" EntitySet="ChallengeResults" />
           </AssociationSet>
           <AssociationSet Name="UserCategory" Association="Codeathon.UserCategory">
             <End Role="User" EntitySet="Users" />
@@ -418,7 +562,7 @@
           </AssociationSet>
           <AssociationSet Name="ChallengeChallengeResult" Association="Codeathon.ChallengeChallengeResult">
             <End Role="Challenge" EntitySet="Challenges" />
-            <End Role="ChallengeResult" EntitySet="ChallengeResults" />
+            <End Role="ChallengeResult" EntitySet="Solutions" />
           </AssociationSet>
           <AssociationSet Name="ChallengeCompetitionChallenge" Association="Codeathon.ChallengeCompetitionChallenge">
             <End Role="Challenge" EntitySet="Challenges" />
@@ -428,12 +572,43 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="Challenge" EntitySet="Challenges" />
           </AssociationSet>
-          <EntitySet Name="Logs" EntityType="Codeathon.Log" />
           <AssociationSet Name="UserLog" Association="Codeathon.UserLog">
             <End Role="User" EntitySet="Users" />
-            <End Role="Log" EntitySet="Logs" />
+            <End Role="Log" EntitySet="SystemLogs" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="TestCaseChallenge" Association="Codeathon.TestCaseChallenge">
+            <End Role="TestCase" EntitySet="TestCases" />
+            <End Role="Challenge" EntitySet="Challenges" />
+          </AssociationSet>
+          <EntitySet Name="SolutionReviews" EntityType="Codeathon.SolutionReview" />
+          <AssociationSet Name="UserSolutionReview" Association="Codeathon.UserSolutionReview">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SolutionReview" EntitySet="SolutionReviews" />
+          </AssociationSet>
+          <EntitySet Name="Comments" EntityType="Codeathon.Comment" />
+          <AssociationSet Name="CommentComment" Association="Codeathon.CommentComment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="Replies" EntitySet="Comments" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="Codeathon.User" />
+          <AssociationSet Name="PLanguageSolution" Association="Codeathon.PLanguageSolution">
+            <End Role="PLanguage" EntitySet="PLanguages" />
+            <End Role="Solution" EntitySet="Solutions" />
+          </AssociationSet>
+          <AssociationSet Name="UserSolution" Association="Codeathon.UserSolution">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Solution" EntitySet="Solutions" />
+          </AssociationSet>
+          <AssociationSet Name="SolutionSolutionReview" Association="Codeathon.SolutionSolutionReview">
+            <End Role="Solution" EntitySet="Solutions" />
+            <End Role="SolutionReview" EntitySet="SolutionReviews" />
+          </AssociationSet>
+          <AssociationSet Name="SolutionComment" Association="Codeathon.SolutionComment">
+            <End Role="Solution" EntitySet="Solutions" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <EntitySet Name="SystemLogs" EntityType="Codeathon.SystemLog" />
+          </EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UID" />
@@ -442,13 +617,14 @@
           <Property Name="Email" Type="String" Nullable="false" />
           <Property Name="HashPassword" Type="String" Nullable="false" />
           <NavigationProperty Name="Profile" Relationship="Codeathon.UserProfile" FromRole="User" ToRole="Profile" />
-          <NavigationProperty Name="ChallengeResults" Relationship="Codeathon.UserChallengeResult" FromRole="User" ToRole="ChallengeResult" />
           <NavigationProperty Name="Categories" Relationship="Codeathon.UserCategory" FromRole="User" ToRole="Category" />
           <NavigationProperty Name="Role" Relationship="Codeathon.RoleUser" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Competitions" Relationship="Codeathon.UserCompetition" FromRole="User" ToRole="Competition" />
           <NavigationProperty Name="EnrolledCompetitions" Relationship="Codeathon.CompetitionUser" FromRole="User" ToRole="Competition" />
           <NavigationProperty Name="Challenges" Relationship="Codeathon.UserChallenge" FromRole="User" ToRole="Challenge" />
           <NavigationProperty Name="Logs" Relationship="Codeathon.UserLog" FromRole="User" ToRole="Log" />
+          <NavigationProperty Name="SolutionReviews" Relationship="Codeathon.UserSolutionReview" FromRole="User" ToRole="SolutionReview" />
+          <NavigationProperty Name="Solutions" Relationship="Codeathon.UserSolution" FromRole="User" ToRole="Solution" />
         </EntityType>
         <EntityType Name="Profile">
           <Key>
@@ -486,6 +662,7 @@
           <NavigationProperty Name="ChallengeResults" Relationship="Codeathon.ChallengeChallengeResult" FromRole="Challenge" ToRole="ChallengeResult" />
           <NavigationProperty Name="CompetitionChallenges" Relationship="Codeathon.ChallengeCompetitionChallenge" FromRole="Challenge" ToRole="CompetitionChallenge" />
           <NavigationProperty Name="Category" Relationship="Codeathon.CategoryChallenge" FromRole="Challenge" ToRole="Category" />
+          <NavigationProperty Name="TestCases" Relationship="Codeathon.TestCaseChallenge" FromRole="Challenge" ToRole="TestCase" />
         </EntityType>
         <EntityType Name="TestCase">
           <Key>
@@ -496,17 +673,21 @@
           <Property Name="ExpectedOutput" Type="String" Nullable="false" />
           <Property Name="AllowView" Type="Boolean" Nullable="false" />
           <Property Name="Timeout" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Challenges" Relationship="Codeathon.TestCaseChallenge" FromRole="TestCase" ToRole="Challenge" />
         </EntityType>
-        <EntityType Name="ChallengeResult">
+        <EntityType Name="Solution">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SourceCode" Type="String" Nullable="false" />
           <Property Name="ExecuteTime" Type="String" Nullable="false" />
-          <NavigationProperty Name="PLanguage" Relationship="Codeathon.PLanguageChallengeResult" FromRole="ChallengeResult" ToRole="PLanguage" />
-          <NavigationProperty Name="User" Relationship="Codeathon.UserChallengeResult" FromRole="ChallengeResult" ToRole="User" />
           <NavigationProperty Name="Challenge" Relationship="Codeathon.ChallengeChallengeResult" FromRole="ChallengeResult" ToRole="Challenge" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="PLanguage" Relationship="Codeathon.PLanguageSolution" FromRole="Solution" ToRole="PLanguage" />
+          <NavigationProperty Name="User" Relationship="Codeathon.UserSolution" FromRole="Solution" ToRole="User" />
+          <NavigationProperty Name="SolutionReviews" Relationship="Codeathon.SolutionSolutionReview" FromRole="Solution" ToRole="SolutionReview" />
+          <NavigationProperty Name="Comments" Relationship="Codeathon.SolutionComment" FromRole="Solution" ToRole="Comment" />
         </EntityType>
         <EntityType Name="PLanguage">
           <Key>
@@ -515,19 +696,11 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Version" Type="String" Nullable="false" />
-          <NavigationProperty Name="ChallengeResults" Relationship="Codeathon.PLanguageChallengeResult" FromRole="PLanguage" ToRole="ChallengeResult" />
+          <NavigationProperty Name="Solutions" Relationship="Codeathon.PLanguageSolution" FromRole="PLanguage" ToRole="Solution" />
         </EntityType>
         <Association Name="UserProfile">
           <End Type="Codeathon.User" Role="User" Multiplicity="1" />
           <End Type="Codeathon.Profile" Role="Profile" Multiplicity="1" />
-        </Association>
-        <Association Name="PLanguageChallengeResult">
-          <End Type="Codeathon.PLanguage" Role="PLanguage" Multiplicity="1" />
-          <End Type="Codeathon.ChallengeResult" Role="ChallengeResult" Multiplicity="*" />
-        </Association>
-        <Association Name="UserChallengeResult">
-          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
-          <End Type="Codeathon.ChallengeResult" Role="ChallengeResult" Multiplicity="*" />
         </Association>
         <Association Name="UserCategory">
           <End Type="Codeathon.User" Role="User" Multiplicity="1" />
@@ -590,7 +763,7 @@
         </Association>
         <Association Name="ChallengeChallengeResult">
           <End Type="Codeathon.Challenge" Role="Challenge" Multiplicity="1" />
-          <End Type="Codeathon.ChallengeResult" Role="ChallengeResult" Multiplicity="*" />
+          <End Type="Codeathon.Solution" Role="ChallengeResult" Multiplicity="*" />
         </Association>
         <Association Name="ChallengeCompetitionChallenge">
           <End Type="Codeathon.Challenge" Role="Challenge" Multiplicity="1" />
@@ -600,35 +773,81 @@
           <End Type="Codeathon.Category" Role="Category" Multiplicity="1" />
           <End Type="Codeathon.Challenge" Role="Challenge" Multiplicity="*" />
         </Association>
-        <EntityType Name="Log">
+        <EntityType Name="Log" BaseType="Codeathon.SystemLog">
+          <NavigationProperty Name="User" Relationship="Codeathon.UserLog" FromRole="Log" ToRole="User" />
+        </EntityType>
+        <Association Name="UserLog">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.Log" Role="Log" Multiplicity="*" />
+        </Association>
+        <Association Name="TestCaseChallenge">
+          <End Type="Codeathon.TestCase" Role="TestCase" Multiplicity="*" />
+          <End Type="Codeathon.Challenge" Role="Challenge" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SolutionReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Author" Relationship="Codeathon.UserSolutionReview" FromRole="SolutionReview" ToRole="User" />
+          <NavigationProperty Name="Solution" Relationship="Codeathon.SolutionSolutionReview" FromRole="SolutionReview" ToRole="Solution" />
+          <Property Name="ArtPoint" Type="String" Nullable="false" />
+          <Property Name="AcademicPoint" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="UserSolutionReview">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.SolutionReview" Role="SolutionReview" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="CommentType" >
+          <Property Type="String" Name="Content" Nullable="false" />
+          <Property Type="DateTime" Name="Datetime" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Parent" Relationship="Codeathon.CommentComment" FromRole="Comment" ToRole="Replies" />
+          <NavigationProperty Name="Replies" Relationship="Codeathon.CommentComment" FromRole="Replies" ToRole="Comment" />
+          <Property Name="Content" Type="String" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Solution" Relationship="Codeathon.SolutionComment" FromRole="Comment" ToRole="Solution" />
+        </EntityType>
+        <Association Name="CommentComment">
+          <End Type="Codeathon.Comment" Role="Comment" Multiplicity="1" />
+          <End Type="Codeathon.Comment" Role="Replies" Multiplicity="*" />
+        </Association>
+        <Association Name="PLanguageSolution">
+          <End Type="Codeathon.PLanguage" Role="PLanguage" Multiplicity="1" />
+          <End Type="Codeathon.Solution" Role="Solution" Multiplicity="*" />
+        </Association>
+        <Association Name="UserSolution">
+          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
+          <End Type="Codeathon.Solution" Role="Solution" Multiplicity="*" />
+        </Association>
+        <Association Name="SolutionSolutionReview">
+          <End Type="Codeathon.Solution" Role="Solution" Multiplicity="1" />
+          <End Type="Codeathon.SolutionReview" Role="SolutionReview" Multiplicity="*" />
+        </Association>
+        <Association Name="SolutionComment">
+          <End Type="Codeathon.Solution" Role="Solution" Multiplicity="1" />
+          <End Type="Codeathon.Comment" Role="Comment" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SystemLog">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Codeathon.UserLog" FromRole="Log" ToRole="User" />
-          <Property Name="Timestamp" Type="DateTime" Nullable="false" />
+          <Property Name="Timestamp" Type="String" Nullable="false" />
         </EntityType>
-        <Association Name="UserLog">
-          <End Type="Codeathon.User" Role="User" Multiplicity="1" />
-          <End Type="Codeathon.Log" Role="Log" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CodeathonStoreContainer" CdmEntityContainer="CodeathonContainer">
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.User)">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="UID" ColumnName="UID" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="HashPassword" ColumnName="HashPassword" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Profiles">
       <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Profile)">
         <MappingFragment StoreEntitySet="Profiles">
@@ -673,12 +892,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ChallengeResults">
-      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.ChallengeResult)">
-        <MappingFragment StoreEntitySet="ChallengeResults">
+    <EntitySetMapping Name="Solutions">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Solution)">
+        <MappingFragment StoreEntitySet="Solutions">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="SourceCode" ColumnName="SourceCode" />
           <ScalarProperty Name="ExecuteTime" ColumnName="ExecuteTime" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -723,13 +943,45 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Logs">
-      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Log)">
-        <MappingFragment StoreEntitySet="Logs">
+    <EntitySetMapping Name="SolutionReviews">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.SolutionReview)">
+        <MappingFragment StoreEntitySet="SolutionReviews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArtPoint" ColumnName="ArtPoint" />
+          <ScalarProperty Name="AcademicPoint" ColumnName="AcademicPoint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Comment)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="HashPassword" ColumnName="HashPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.SystemLog)">
+        <MappingFragment StoreEntitySet="SystemLogs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Codeathon.Log)">
+        <MappingFragment StoreEntitySet="SystemLogs_Log">
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -739,22 +991,6 @@
       </EndProperty>
       <EndProperty Name="User">
         <ScalarProperty Name="UID" ColumnName="UID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="PLanguageChallengeResult" TypeName="Codeathon.PLanguageChallengeResult" StoreEntitySet="ChallengeResults">
-      <EndProperty Name="PLanguage">
-        <ScalarProperty Name="Id" ColumnName="PLanguage_Id" />
-      </EndProperty>
-      <EndProperty Name="ChallengeResult">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserChallengeResult" TypeName="Codeathon.UserChallengeResult" StoreEntitySet="ChallengeResults">
-      <EndProperty Name="User">
-        <ScalarProperty Name="UID" ColumnName="User_UID" />
-      </EndProperty>
-      <EndProperty Name="ChallengeResult">
-        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="UserCategory" TypeName="Codeathon.UserCategory" StoreEntitySet="Categories">
@@ -805,7 +1041,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ChallengeChallengeResult" TypeName="Codeathon.ChallengeChallengeResult" StoreEntitySet="ChallengeResults">
+    <AssociationSetMapping Name="ChallengeChallengeResult" TypeName="Codeathon.ChallengeChallengeResult" StoreEntitySet="Solutions">
       <EndProperty Name="Challenge">
         <ScalarProperty Name="Id" ColumnName="Challenge_Id" />
       </EndProperty>
@@ -829,11 +1065,67 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="UserLog" TypeName="Codeathon.UserLog" StoreEntitySet="Logs">
+    <AssociationSetMapping Name="UserLog" TypeName="Codeathon.UserLog" StoreEntitySet="SystemLogs_Log">
       <EndProperty Name="User">
         <ScalarProperty Name="UID" ColumnName="User_UID" />
       </EndProperty>
       <EndProperty Name="Log">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TestCaseChallenge" TypeName="Codeathon.TestCaseChallenge" StoreEntitySet="TestCaseChallenge">
+      <EndProperty Name="TestCase">
+        <ScalarProperty Name="Id" ColumnName="TestCases_Id" />
+      </EndProperty>
+      <EndProperty Name="Challenge">
+        <ScalarProperty Name="Id" ColumnName="Challenges_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserSolutionReview" TypeName="Codeathon.UserSolutionReview" StoreEntitySet="SolutionReviews">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="Author_UID" />
+      </EndProperty>
+      <EndProperty Name="SolutionReview">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CommentComment" TypeName="Codeathon.CommentComment" StoreEntitySet="Comments">
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Replies_Id" />
+      </EndProperty>
+      <EndProperty Name="Replies">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PLanguageSolution" TypeName="Codeathon.PLanguageSolution" StoreEntitySet="Solutions">
+      <EndProperty Name="PLanguage">
+        <ScalarProperty Name="Id" ColumnName="PLanguage_Id" />
+      </EndProperty>
+      <EndProperty Name="Solution">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserSolution" TypeName="Codeathon.UserSolution" StoreEntitySet="Solutions">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UID" ColumnName="User_UID" />
+      </EndProperty>
+      <EndProperty Name="Solution">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SolutionSolutionReview" TypeName="Codeathon.SolutionSolutionReview" StoreEntitySet="SolutionReviews">
+      <EndProperty Name="Solution">
+        <ScalarProperty Name="Id" ColumnName="Solution_Id" />
+      </EndProperty>
+      <EndProperty Name="SolutionReview">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SolutionComment" TypeName="Codeathon.SolutionComment" StoreEntitySet="Comments">
+      <EndProperty Name="Solution">
+        <ScalarProperty Name="Id" ColumnName="Solution_Id" />
+      </EndProperty>
+      <EndProperty Name="Comment">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

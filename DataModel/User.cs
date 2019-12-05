@@ -17,12 +17,13 @@ namespace Codeathon.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.ChallengeResults = new HashSet<ChallengeResult>();
             this.Categories = new HashSet<Category>();
             this.Competitions = new HashSet<Competition>();
             this.EnrolledCompetitions = new HashSet<Competition>();
             this.Challenges = new HashSet<Challenge>();
             this.Logs = new HashSet<Log>();
+            this.SolutionReviews = new HashSet<SolutionReview>();
+            this.Solutions = new HashSet<Solution>();
         }
     
         public long UID { get; set; }
@@ -30,8 +31,6 @@ namespace Codeathon.DataModel
         public string HashPassword { get; set; }
     
         public virtual Profile Profile { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChallengeResult> ChallengeResults { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Categories { get; set; }
         public virtual Role Role { get; set; }
@@ -43,5 +42,9 @@ namespace Codeathon.DataModel
         public virtual ICollection<Challenge> Challenges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Log> Logs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SolutionReview> SolutionReviews { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Solution> Solutions { get; set; }
     }
 }

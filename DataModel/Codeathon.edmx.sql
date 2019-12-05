@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/05/2019 01:43:14
+-- Date Created: 12/05/2019 13:36:43
 -- Generated from EDMX file: D:\Repos\DotNet\CodeathonDesktop\DataModel\Codeathon.edmx
 -- --------------------------------------------------
 
@@ -59,6 +59,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserLog]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Logs] DROP CONSTRAINT [FK_UserLog];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TestCaseChallenge_TestCase]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TestCaseChallenge] DROP CONSTRAINT [FK_TestCaseChallenge_TestCase];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TestCaseChallenge_Challenge]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TestCaseChallenge] DROP CONSTRAINT [FK_TestCaseChallenge_Challenge];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -100,20 +106,13 @@ GO
 IF OBJECT_ID(N'[dbo].[CompetitionUser]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CompetitionUser];
 GO
+IF OBJECT_ID(N'[dbo].[TestCaseChallenge]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TestCaseChallenge];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
-
--- Creating table 'Users'
-CREATE TABLE [dbo].[Users] (
-    [UID] bigint IDENTITY(1,1) NOT NULL,
-    [Email] nvarchar(max)  NOT NULL,
-    [HashPassword] nvarchar(max)  NOT NULL,
-    [Profile_Id] int  NOT NULL,
-    [Role_Id] int  NOT NULL
-);
-GO
 
 -- Creating table 'Profiles'
 CREATE TABLE [dbo].[Profiles] (
@@ -158,14 +157,15 @@ CREATE TABLE [dbo].[TestCases] (
 );
 GO
 
--- Creating table 'ChallengeResults'
-CREATE TABLE [dbo].[ChallengeResults] (
+-- Creating table 'Solutions'
+CREATE TABLE [dbo].[Solutions] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [SourceCode] nvarchar(max)  NOT NULL,
     [ExecuteTime] nvarchar(max)  NOT NULL,
+    [Datetime] datetime  NOT NULL,
+    [Challenge_Id] int  NOT NULL,
     [PLanguage_Id] int  NOT NULL,
-    [User_UID] bigint  NOT NULL,
-    [Challenge_Id] int  NOT NULL
+    [User_UID] bigint  NOT NULL
 );
 GO
 
@@ -209,12 +209,48 @@ CREATE TABLE [dbo].[CompetitionChallenges] (
 );
 GO
 
--- Creating table 'Logs'
-CREATE TABLE [dbo].[Logs] (
+-- Creating table 'SolutionReviews'
+CREATE TABLE [dbo].[SolutionReviews] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [ArtPoint] nvarchar(max)  NOT NULL,
+    [AcademicPoint] nvarchar(max)  NOT NULL,
+    [Author_UID] bigint  NOT NULL,
+    [Solution_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Comments'
+CREATE TABLE [dbo].[Comments] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [Content] nvarchar(max)  NOT NULL,
+    [Datetime] datetime  NOT NULL,
+    [Replies_Id] bigint  NOT NULL,
+    [Solution_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Users'
+CREATE TABLE [dbo].[Users] (
+    [UID] bigint IDENTITY(1,1) NOT NULL,
+    [Email] nvarchar(max)  NOT NULL,
+    [HashPassword] nvarchar(max)  NOT NULL,
+    [Profile_Id] int  NOT NULL,
+    [Role_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'SystemLogs'
+CREATE TABLE [dbo].[SystemLogs] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [Title] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
-    [Timestamp] datetime  NOT NULL,
+    [Timestamp] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'SystemLogs_Log'
+CREATE TABLE [dbo].[SystemLogs_Log] (
+    [Id] bigint  NOT NULL,
     [User_UID] bigint  NOT NULL
 );
 GO
@@ -226,15 +262,16 @@ CREATE TABLE [dbo].[CompetitionUser] (
 );
 GO
 
+-- Creating table 'TestCaseChallenge'
+CREATE TABLE [dbo].[TestCaseChallenge] (
+    [TestCases_Id] int  NOT NULL,
+    [Challenges_Id] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
-
--- Creating primary key on [UID] in table 'Users'
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [PK_Users]
-    PRIMARY KEY CLUSTERED ([UID] ASC);
-GO
 
 -- Creating primary key on [Id] in table 'Profiles'
 ALTER TABLE [dbo].[Profiles]
@@ -260,9 +297,9 @@ ADD CONSTRAINT [PK_TestCases]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'ChallengeResults'
-ALTER TABLE [dbo].[ChallengeResults]
-ADD CONSTRAINT [PK_ChallengeResults]
+-- Creating primary key on [Id] in table 'Solutions'
+ALTER TABLE [dbo].[Solutions]
+ADD CONSTRAINT [PK_Solutions]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -290,9 +327,33 @@ ADD CONSTRAINT [PK_CompetitionChallenges]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Logs'
-ALTER TABLE [dbo].[Logs]
-ADD CONSTRAINT [PK_Logs]
+-- Creating primary key on [Id] in table 'SolutionReviews'
+ALTER TABLE [dbo].[SolutionReviews]
+ADD CONSTRAINT [PK_SolutionReviews]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Comments'
+ALTER TABLE [dbo].[Comments]
+ADD CONSTRAINT [PK_Comments]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [UID] in table 'Users'
+ALTER TABLE [dbo].[Users]
+ADD CONSTRAINT [PK_Users]
+    PRIMARY KEY CLUSTERED ([UID] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'SystemLogs'
+ALTER TABLE [dbo].[SystemLogs]
+ADD CONSTRAINT [PK_SystemLogs]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'SystemLogs_Log'
+ALTER TABLE [dbo].[SystemLogs_Log]
+ADD CONSTRAINT [PK_SystemLogs_Log]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -300,6 +361,12 @@ GO
 ALTER TABLE [dbo].[CompetitionUser]
 ADD CONSTRAINT [PK_CompetitionUser]
     PRIMARY KEY CLUSTERED ([EnrolledCompetitions_Id], [InvitedUsers_UID] ASC);
+GO
+
+-- Creating primary key on [TestCases_Id], [Challenges_Id] in table 'TestCaseChallenge'
+ALTER TABLE [dbo].[TestCaseChallenge]
+ADD CONSTRAINT [PK_TestCaseChallenge]
+    PRIMARY KEY CLUSTERED ([TestCases_Id], [Challenges_Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -319,36 +386,6 @@ GO
 CREATE INDEX [IX_FK_UserProfile]
 ON [dbo].[Users]
     ([Profile_Id]);
-GO
-
--- Creating foreign key on [PLanguage_Id] in table 'ChallengeResults'
-ALTER TABLE [dbo].[ChallengeResults]
-ADD CONSTRAINT [FK_PLanguageChallengeResult]
-    FOREIGN KEY ([PLanguage_Id])
-    REFERENCES [dbo].[PLanguages]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PLanguageChallengeResult'
-CREATE INDEX [IX_FK_PLanguageChallengeResult]
-ON [dbo].[ChallengeResults]
-    ([PLanguage_Id]);
-GO
-
--- Creating foreign key on [User_UID] in table 'ChallengeResults'
-ALTER TABLE [dbo].[ChallengeResults]
-ADD CONSTRAINT [FK_UserChallengeResult]
-    FOREIGN KEY ([User_UID])
-    REFERENCES [dbo].[Users]
-        ([UID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserChallengeResult'
-CREATE INDEX [IX_FK_UserChallengeResult]
-ON [dbo].[ChallengeResults]
-    ([User_UID]);
 GO
 
 -- Creating foreign key on [User_UID] in table 'Categories'
@@ -450,8 +487,8 @@ ON [dbo].[Challenges]
     ([Owner_UID]);
 GO
 
--- Creating foreign key on [Challenge_Id] in table 'ChallengeResults'
-ALTER TABLE [dbo].[ChallengeResults]
+-- Creating foreign key on [Challenge_Id] in table 'Solutions'
+ALTER TABLE [dbo].[Solutions]
 ADD CONSTRAINT [FK_ChallengeChallengeResult]
     FOREIGN KEY ([Challenge_Id])
     REFERENCES [dbo].[Challenges]
@@ -461,7 +498,7 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ChallengeChallengeResult'
 CREATE INDEX [IX_FK_ChallengeChallengeResult]
-ON [dbo].[ChallengeResults]
+ON [dbo].[Solutions]
     ([Challenge_Id]);
 GO
 
@@ -495,8 +532,8 @@ ON [dbo].[Challenges]
     ([Category_Id]);
 GO
 
--- Creating foreign key on [User_UID] in table 'Logs'
-ALTER TABLE [dbo].[Logs]
+-- Creating foreign key on [User_UID] in table 'SystemLogs_Log'
+ALTER TABLE [dbo].[SystemLogs_Log]
 ADD CONSTRAINT [FK_UserLog]
     FOREIGN KEY ([User_UID])
     REFERENCES [dbo].[Users]
@@ -506,8 +543,131 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserLog'
 CREATE INDEX [IX_FK_UserLog]
-ON [dbo].[Logs]
+ON [dbo].[SystemLogs_Log]
     ([User_UID]);
+GO
+
+-- Creating foreign key on [TestCases_Id] in table 'TestCaseChallenge'
+ALTER TABLE [dbo].[TestCaseChallenge]
+ADD CONSTRAINT [FK_TestCaseChallenge_TestCase]
+    FOREIGN KEY ([TestCases_Id])
+    REFERENCES [dbo].[TestCases]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Challenges_Id] in table 'TestCaseChallenge'
+ALTER TABLE [dbo].[TestCaseChallenge]
+ADD CONSTRAINT [FK_TestCaseChallenge_Challenge]
+    FOREIGN KEY ([Challenges_Id])
+    REFERENCES [dbo].[Challenges]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TestCaseChallenge_Challenge'
+CREATE INDEX [IX_FK_TestCaseChallenge_Challenge]
+ON [dbo].[TestCaseChallenge]
+    ([Challenges_Id]);
+GO
+
+-- Creating foreign key on [Author_UID] in table 'SolutionReviews'
+ALTER TABLE [dbo].[SolutionReviews]
+ADD CONSTRAINT [FK_UserSolutionReview]
+    FOREIGN KEY ([Author_UID])
+    REFERENCES [dbo].[Users]
+        ([UID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserSolutionReview'
+CREATE INDEX [IX_FK_UserSolutionReview]
+ON [dbo].[SolutionReviews]
+    ([Author_UID]);
+GO
+
+-- Creating foreign key on [Replies_Id] in table 'Comments'
+ALTER TABLE [dbo].[Comments]
+ADD CONSTRAINT [FK_CommentComment]
+    FOREIGN KEY ([Replies_Id])
+    REFERENCES [dbo].[Comments]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CommentComment'
+CREATE INDEX [IX_FK_CommentComment]
+ON [dbo].[Comments]
+    ([Replies_Id]);
+GO
+
+-- Creating foreign key on [PLanguage_Id] in table 'Solutions'
+ALTER TABLE [dbo].[Solutions]
+ADD CONSTRAINT [FK_PLanguageSolution]
+    FOREIGN KEY ([PLanguage_Id])
+    REFERENCES [dbo].[PLanguages]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PLanguageSolution'
+CREATE INDEX [IX_FK_PLanguageSolution]
+ON [dbo].[Solutions]
+    ([PLanguage_Id]);
+GO
+
+-- Creating foreign key on [User_UID] in table 'Solutions'
+ALTER TABLE [dbo].[Solutions]
+ADD CONSTRAINT [FK_UserSolution]
+    FOREIGN KEY ([User_UID])
+    REFERENCES [dbo].[Users]
+        ([UID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserSolution'
+CREATE INDEX [IX_FK_UserSolution]
+ON [dbo].[Solutions]
+    ([User_UID]);
+GO
+
+-- Creating foreign key on [Solution_Id] in table 'SolutionReviews'
+ALTER TABLE [dbo].[SolutionReviews]
+ADD CONSTRAINT [FK_SolutionSolutionReview]
+    FOREIGN KEY ([Solution_Id])
+    REFERENCES [dbo].[Solutions]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SolutionSolutionReview'
+CREATE INDEX [IX_FK_SolutionSolutionReview]
+ON [dbo].[SolutionReviews]
+    ([Solution_Id]);
+GO
+
+-- Creating foreign key on [Solution_Id] in table 'Comments'
+ALTER TABLE [dbo].[Comments]
+ADD CONSTRAINT [FK_SolutionComment]
+    FOREIGN KEY ([Solution_Id])
+    REFERENCES [dbo].[Solutions]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SolutionComment'
+CREATE INDEX [IX_FK_SolutionComment]
+ON [dbo].[Comments]
+    ([Solution_Id]);
+GO
+
+-- Creating foreign key on [Id] in table 'SystemLogs_Log'
+ALTER TABLE [dbo].[SystemLogs_Log]
+ADD CONSTRAINT [FK_Log_inherits_SystemLog]
+    FOREIGN KEY ([Id])
+    REFERENCES [dbo].[SystemLogs]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- --------------------------------------------------

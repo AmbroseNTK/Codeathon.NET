@@ -12,9 +12,13 @@ namespace Codeathon.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Log : SystemLog
+    public partial class SolutionReview
     {
+        public long Id { get; set; }
+        public string ArtPoint { get; set; }
+        public string AcademicPoint { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual User Author { get; set; }
+        public virtual Solution Solution { get; set; }
     }
 }
