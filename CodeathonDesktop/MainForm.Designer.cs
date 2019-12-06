@@ -47,14 +47,17 @@
             this.btFindNewFriends = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.barAuthButton = new DevExpress.XtraBars.BarButtonItem();
+            this.mainPanel = new DevExpress.XtraEditors.PanelControl();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
+            this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.loginPanel1);
+            this.fluentDesignFormContainer1.Controls.Add(this.mainPanel);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(530, 77);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
@@ -64,9 +67,9 @@
             // loginPanel1
             // 
             this.loginPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loginPanel1.Location = new System.Drawing.Point(0, 0);
+            this.loginPanel1.Location = new System.Drawing.Point(3, 3);
             this.loginPanel1.Name = "loginPanel1";
-            this.loginPanel1.Size = new System.Drawing.Size(1744, 1381);
+            this.loginPanel1.Size = new System.Drawing.Size(1738, 1375);
             this.loginPanel1.TabIndex = 0;
             // 
             // accordionControl1
@@ -191,9 +194,17 @@
             this.barAuthButton.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.barAuthButton.Caption = "Annonymous";
             this.barAuthButton.Id = 0;
-            this.barAuthButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barAuthButton.Name = "barAuthButton";
             this.barAuthButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Controls.Add(this.loginPanel1);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1744, 1381);
+            this.mainPanel.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -205,7 +216,6 @@
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MainForm";
             this.NavigationControl = this.accordionControl1;
             this.Text = "Codeathon Desktop";
@@ -213,6 +223,8 @@
             this.fluentDesignFormContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
+            this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -241,6 +253,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement btMenuContent;
         private Components.LoginPanel loginPanel1;
         private DevExpress.XtraBars.BarButtonItem barAuthButton;
+        private DevExpress.XtraEditors.PanelControl mainPanel;
     }
 }
 

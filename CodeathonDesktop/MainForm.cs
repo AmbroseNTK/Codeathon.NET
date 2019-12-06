@@ -17,16 +17,24 @@ namespace CodeathonDesktop
 {
     public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        ImageList imageList = new ImageList();
+       
+
         public MainForm()
         {
             InitializeComponent();
             Service<Notificator>.Use().OnPushNotification += MainForm_OnPushNotification;
             Service<AuthData>.Use().OnAuthenticated += MainForm_OnAuthenticated;
+
+            imageList.ImageSize = new Size(30, 30);
         }
 
         private void MainForm_OnAuthenticated(User auth)
         {
-            barAuthButton.ImageOptions.Image = auth.Profile.Avatar.MakeImage();
+            
+            imageList.Images.Add("avatar", auth.Profile.Avatar.MakeImage());
+            barAuthButton.ImageOptions.Image = imageList.Images["avatar"];
+            
             barAuthButton.Caption = auth.Profile.Username;
         }
 
