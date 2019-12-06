@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/05/2019 13:36:43
--- Generated from EDMX file: D:\Repos\DotNet\CodeathonDesktop\DataModel\Codeathon.edmx
+-- Date Created: 12/06/2019 10:51:15
+-- Generated from EDMX file: D:\CNTT\LapTrinhGiaoDien\Project\DataModel\Codeathon.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [Codeathon];
+USE [codeathon];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -19,12 +19,6 @@ GO
 
 IF OBJECT_ID(N'[dbo].[FK_UserProfile]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserProfile];
-GO
-IF OBJECT_ID(N'[dbo].[FK_PLanguageChallengeResult]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ChallengeResults] DROP CONSTRAINT [FK_PLanguageChallengeResult];
-GO
-IF OBJECT_ID(N'[dbo].[FK_UserChallengeResult]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ChallengeResults] DROP CONSTRAINT [FK_UserChallengeResult];
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserCategory]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Categories] DROP CONSTRAINT [FK_UserCategory];
@@ -48,7 +42,7 @@ IF OBJECT_ID(N'[dbo].[FK_UserChallenge]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Challenges] DROP CONSTRAINT [FK_UserChallenge];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChallengeChallengeResult]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ChallengeResults] DROP CONSTRAINT [FK_ChallengeChallengeResult];
+    ALTER TABLE [dbo].[Solutions] DROP CONSTRAINT [FK_ChallengeChallengeResult];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChallengeCompetitionChallenge]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CompetitionChallenges] DROP CONSTRAINT [FK_ChallengeCompetitionChallenge];
@@ -57,7 +51,7 @@ IF OBJECT_ID(N'[dbo].[FK_CategoryChallenge]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Challenges] DROP CONSTRAINT [FK_CategoryChallenge];
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserLog]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Logs] DROP CONSTRAINT [FK_UserLog];
+    ALTER TABLE [dbo].[SystemLogs_Log] DROP CONSTRAINT [FK_UserLog];
 GO
 IF OBJECT_ID(N'[dbo].[FK_TestCaseChallenge_TestCase]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TestCaseChallenge] DROP CONSTRAINT [FK_TestCaseChallenge_TestCase];
@@ -65,14 +59,32 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_TestCaseChallenge_Challenge]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TestCaseChallenge] DROP CONSTRAINT [FK_TestCaseChallenge_Challenge];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UserSolutionReview]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SolutionReviews] DROP CONSTRAINT [FK_UserSolutionReview];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CommentComment]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_CommentComment];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PLanguageSolution]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Solutions] DROP CONSTRAINT [FK_PLanguageSolution];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserSolution]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Solutions] DROP CONSTRAINT [FK_UserSolution];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SolutionSolutionReview]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SolutionReviews] DROP CONSTRAINT [FK_SolutionSolutionReview];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SolutionComment]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_SolutionComment];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Log_inherits_SystemLog]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SystemLogs_Log] DROP CONSTRAINT [FK_Log_inherits_SystemLog];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Users];
-GO
 IF OBJECT_ID(N'[dbo].[Profiles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Profiles];
 GO
@@ -85,8 +97,8 @@ GO
 IF OBJECT_ID(N'[dbo].[TestCases]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TestCases];
 GO
-IF OBJECT_ID(N'[dbo].[ChallengeResults]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ChallengeResults];
+IF OBJECT_ID(N'[dbo].[Solutions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Solutions];
 GO
 IF OBJECT_ID(N'[dbo].[PLanguages]', 'U') IS NOT NULL
     DROP TABLE [dbo].[PLanguages];
@@ -100,8 +112,20 @@ GO
 IF OBJECT_ID(N'[dbo].[CompetitionChallenges]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CompetitionChallenges];
 GO
-IF OBJECT_ID(N'[dbo].[Logs]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Logs];
+IF OBJECT_ID(N'[dbo].[SolutionReviews]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SolutionReviews];
+GO
+IF OBJECT_ID(N'[dbo].[Comments]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Comments];
+GO
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[SystemLogs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SystemLogs];
+GO
+IF OBJECT_ID(N'[dbo].[SystemLogs_Log]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SystemLogs_Log];
 GO
 IF OBJECT_ID(N'[dbo].[CompetitionUser]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CompetitionUser];
