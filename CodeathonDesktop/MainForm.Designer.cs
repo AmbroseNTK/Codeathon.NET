@@ -46,7 +46,7 @@
             this.menuCommunity = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btFindNewFriends = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barAuthButton = new DevExpress.XtraBars.BarButtonItem();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
@@ -178,22 +178,22 @@
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1});
+            this.barAuthButton});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(2274, 77);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
-            this.fluentDesignFormControl1.TitleItemLinks.Add(this.barButtonItem1);
+            this.fluentDesignFormControl1.TitleItemLinks.Add(this.barAuthButton);
             // 
-            // barButtonItem1
+            // barAuthButton
             // 
-            this.barButtonItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barButtonItem1.Caption = "Annonymous";
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barAuthButton.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barAuthButton.Caption = "Annonymous";
+            this.barAuthButton.Id = 0;
+            this.barAuthButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.barAuthButton.Name = "barAuthButton";
+            this.barAuthButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // MainForm
             // 
@@ -205,6 +205,7 @@
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MainForm";
             this.NavigationControl = this.accordionControl1;
             this.Text = "Codeathon Desktop";
@@ -239,7 +240,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement btMenuChallenge;
         private DevExpress.XtraBars.Navigation.AccordionControlElement btMenuContent;
         private Components.LoginPanel loginPanel1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barAuthButton;
     }
 }
 

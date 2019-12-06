@@ -120,7 +120,7 @@ namespace Codeathon.API.Services
             User user = Read((usr) => usr.Email == email && usr.HashPassword == password.Trim().Hasing()).FirstOrDefault();
             if (user != null)
             {
-                Service<AuthData>.Use().Set(user.UID, email);
+                Service<AuthData>.Use().Set(user);
                 Service<Notificator>.Use().Push(new Notification()
                 {
                     Status = NotificationStatus.Info,

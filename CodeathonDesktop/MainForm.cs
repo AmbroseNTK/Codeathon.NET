@@ -21,6 +21,13 @@ namespace CodeathonDesktop
         {
             InitializeComponent();
             Service<Notificator>.Use().OnPushNotification += MainForm_OnPushNotification;
+            Service<AuthData>.Use().OnAuthenticated += MainForm_OnAuthenticated;
+        }
+
+        private void MainForm_OnAuthenticated(User auth)
+        {
+            barAuthButton.ImageOptions.Image = auth.Profile.Avatar.MakeImage();
+            barAuthButton.Caption = auth.Profile.Username;
         }
 
         private void MainForm_OnPushNotification(Notification notification)

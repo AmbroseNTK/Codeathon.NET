@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="71606907b4914de99b41edcbb573f897" Name="Diagram1" >
+      <Diagram DiagramId="71606907b4914de99b41edcbb573f897" Name="Diagram1" ShowGrid="true" >
         <EntityTypeShape EntityType="Codeathon.User" Width="1.875" PointX="3.25" PointY="3.25" />
         <EntityTypeShape EntityType="Codeathon.Profile" Width="1.5" PointX="0.5" PointY="4" />
         <EntityTypeShape EntityType="Codeathon.Category" Width="1.5" PointX="8" PointY="0.75" />
-        <EntityTypeShape EntityType="Codeathon.Challenge" Width="1.875" PointX="10.125" PointY="6.625" />
+        <EntityTypeShape EntityType="Codeathon.Challenge" Width="1.875" PointX="10.125" PointY="6.625" FillColor="LimeGreen" />
         <EntityTypeShape EntityType="Codeathon.TestCase" Width="1.5" PointX="14" PointY="7.625" />
         <EntityTypeShape EntityType="Codeathon.Solution" Width="1.5" PointX="6.125" PointY="5.75" />
         <EntityTypeShape EntityType="Codeathon.PLanguage" Width="1.5" PointX="0.5" PointY="10.25" />

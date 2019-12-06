@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Codeathon.DataModel;
+using Codeathon.API.Events;
+
 namespace Codeathon.API.Utilities
 {
     public class AuthData
     {
-        private long uid;
-        private string email;
+        public event AuthenticatedHandler OnAuthenticated;
 
-        public long Uid { get => uid; set => uid = value; }
-        public string Email { get => email; set => email = value; }
+        User authUser;
 
-        public void Set(long uid, string email)
+        public void Set(User user)
         {
-            this.uid = uid;
-            this.email = email;
+            this.authUser = user;
+            OnAuthenticated?.Invoke(user);
         }
 
     }
