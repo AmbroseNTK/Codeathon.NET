@@ -1,4 +1,4 @@
-﻿namespace CodeathonDesktop
+﻿namespace Codeathon.Desktop
 {
     partial class MainForm
     {
@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.formAssistant1 = new DevExpress.XtraBars.FormAssistant();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.loginPanel1 = new CodeathonDesktop.Components.LoginPanel();
+            this.mainPanel = new DevExpress.XtraEditors.PanelControl();
+            this.loginPanel1 = new Codeathon.Desktop.Components.LoginPanel();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.menuCodeathon = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btMenuProfile = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -47,12 +49,12 @@
             this.btFindNewFriends = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.barAuthButton = new DevExpress.XtraBars.BarButtonItem();
-            this.mainPanel = new DevExpress.XtraEditors.PanelControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.fluentDesignFormContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
@@ -63,6 +65,15 @@
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
             this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1744, 1381);
             this.fluentDesignFormContainer1.TabIndex = 0;
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Controls.Add(this.loginPanel1);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1744, 1381);
+            this.mainPanel.TabIndex = 1;
             // 
             // loginPanel1
             // 
@@ -102,6 +113,7 @@
             this.btMenuProfile.Name = "btMenuProfile";
             this.btMenuProfile.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.btMenuProfile.Text = "Your profile";
+            this.btMenuProfile.Click += new System.EventHandler(this.btMenuProfile_Click);
             // 
             // btMenuContent
             // 
@@ -118,6 +130,7 @@
             this.btMenuChallenge.Name = "btMenuChallenge";
             this.btMenuChallenge.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.btMenuChallenge.Text = "Challenges";
+            this.btMenuChallenge.Click += new System.EventHandler(this.btMenuChallenge_Click);
             // 
             // btMenuCompetition
             // 
@@ -197,15 +210,6 @@
             this.barAuthButton.Name = "barAuthButton";
             this.barAuthButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // mainPanel
-            // 
-            this.mainPanel.Controls.Add(this.loginPanel1);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1744, 1381);
-            this.mainPanel.TabIndex = 1;
-            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(2274, 1458);
@@ -221,10 +225,10 @@
             this.Text = "Codeathon Desktop";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(83)))));
             this.fluentDesignFormContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -254,6 +258,7 @@
         private Components.LoginPanel loginPanel1;
         private DevExpress.XtraBars.BarButtonItem barAuthButton;
         private DevExpress.XtraEditors.PanelControl mainPanel;
+        private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
     }
 }
 

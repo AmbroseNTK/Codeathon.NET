@@ -60,7 +60,7 @@ namespace Codeathon.API.Utilities
             }
             catch
             {
-                return new System.Drawing.Bitmap(0,0);
+                return new System.Drawing.Bitmap(1,1);
             }
         }
     }

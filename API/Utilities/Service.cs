@@ -13,6 +13,7 @@ namespace Codeathon.API.Utilities
 
         public static T Use(object[] init = null )
         {
+            
             if(instance == null)
             {
                 instance = (T)Activator.CreateInstance(typeof(T), init == null ? (new object[0]) : init);

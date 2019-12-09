@@ -14,6 +14,27 @@ namespace Codeathon.API.Services
 {
     public class UserService : LogicCRUD<long, DataModel.User>
     {
+
+        public UserService()
+        {
+            if (GetUserByUsername("admin") == null)
+            {
+                GetDbSet().Add(new User()
+                {
+                    Role = Service<RoleService>.Use().GetRole(UserRole.Admin),
+                    Email = "admin",
+                    HashPassword = "admin".Hasing(),
+                    Profile = new Profile()
+                    {
+                        Username = "admin",
+                        PhoneNumber = "012 345 678",
+                        Avatar = ""
+                    }
+                });
+                SaveChanges();
+            }
+        }
+
         public event LoginSuccessHandler OnLoginSuccess;
         public event RegisterSuccessHandler OnRegisterSuccess;
 
@@ -30,12 +51,6 @@ namespace Codeathon.API.Services
         protected override long GetKey(User entity)
         {
             return entity.UID;
-        }
-
-        public bool CheckUniqueUsername(string username)
-        {
-            Profile pf = Service<CodeathonContainer>.Use().Profiles.ToList().Where((profile) => profile.Username == username).FirstOrDefault();
-            return pf == null;
         }
 
         /// <summary>
@@ -57,7 +72,7 @@ namespace Codeathon.API.Services
                 return;
             }
 
-            if (!CheckUniqueUsername(profile.Username))
+            if (Read((usr)=>usr.Profile.Username == profile.Username).Count()!=0)
             {
                 Service<Notificator>.Use().Push(new Notification()
                 {
@@ -67,8 +82,7 @@ namespace Codeathon.API.Services
                 return;
             }
 
-            User duplication = Service<CodeathonContainer>.Use().Users
-                  .ToList().Where((usr) => usr.Email == email).FirstOrDefault();
+            User duplication = Read((usr) => usr.Email == email).FirstOrDefault();
 
             if (duplication != null)
             {
@@ -136,6 +150,11 @@ namespace Codeathon.API.Services
                     Info = "Email or Password is invalid"
                 });
             }
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            return Read((usr) => usr.Profile.Username == username).FirstOrDefault();
         }
 
     }

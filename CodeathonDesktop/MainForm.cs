@@ -8,12 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Codeathon;
+using Codeathon.Desktop;
 using Codeathon.API;
 using Codeathon.API.Services;
 using Codeathon.API.Utilities;
 using Codeathon.DataModel;
 
-namespace CodeathonDesktop
+using DevExpress.XtraEditors;
+
+namespace Codeathon.Desktop
 {
     public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
@@ -26,7 +30,8 @@ namespace CodeathonDesktop
             Service<Notificator>.Use().OnPushNotification += MainForm_OnPushNotification;
             Service<AuthData>.Use().OnAuthenticated += MainForm_OnAuthenticated;
 
-            imageList.ImageSize = new Size(30, 30);
+            imageList.ImageSize = new Size(25, 25);
+        
         }
 
         private void MainForm_OnAuthenticated(User auth)
@@ -40,8 +45,20 @@ namespace CodeathonDesktop
 
         private void MainForm_OnPushNotification(Notification notification)
         {
-            MessageBox.Show(notification.Info);
+            XtraMessageBox.Show(notification.Info,notification.Status.ToString(),MessageBoxButtons.OK,MessageBoxIcon.Information);
             Service<Notificator>.Use().Discard();
+        }
+
+        private void btMenuProfile_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(new Components.ProfilePanel() { Dock = DockStyle.Fill });
+        }
+
+        private void btMenuChallenge_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(new Components.ChallengeEditor() { Dock = DockStyle.Fill });
         }
     }
 }

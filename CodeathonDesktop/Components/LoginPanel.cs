@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using Codeathon.API.Services;
 using Codeathon.API.Utilities;
 
-namespace CodeathonDesktop.Components
+namespace Codeathon.Desktop.Components
 {
     public partial class LoginPanel : DevExpress.XtraEditors.XtraUserControl
     {

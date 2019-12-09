@@ -21,5 +21,7 @@ namespace Codeathon.API.Utilities
             OnAuthenticated?.Invoke(user);
         }
 
+        public User Get() => authUser;
+
     }
 }

@@ -54,6 +54,8 @@
     <Compile Include="Interfaces\ICRUD.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\ChallengeService.cs" />
     <Compile Include="Services\LoggerService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Utilities\AbstractCRUD.cs" />
