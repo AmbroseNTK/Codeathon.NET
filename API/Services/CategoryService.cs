@@ -80,9 +80,14 @@ namespace Codeathon.API.Services
             return;
         }
 
-        public List<Category> GetOwnCategory()
+        public List<Category> GetOwnCategories()
         {
             return Service<AuthData>.Use().Get().Categories.ToList();
+        }
+
+        public List<Category> GetCategories()
+        {
+            return Read().ToList();
         }
 
         public void Delete(Category category)
@@ -151,6 +156,7 @@ namespace Codeathon.API.Services
                 });
             }
         }
+
 
     }
 }

@@ -65,7 +65,7 @@ namespace Codeathon.Desktop.Components
             try
             {
                 categories = new List<CategoryEntity>();
-                Service<CategoryService>.Use().GetOwnCategory().ForEach((category) =>
+                Service<CategoryService>.Use().GetOwnCategories().ForEach((category) =>
                 {
                     categories.Add(new CategoryEntity()
                     {

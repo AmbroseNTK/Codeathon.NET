@@ -45,6 +45,10 @@ namespace Codeathon.API.Services
                 return new List<Challenge>();
             }
         }
+        public List<Challenge> GetOwnChallenges()
+        {
+            return Service<AuthData>.Use().Get().Challenges.ToList();
+        }
         public void Create(string name,string title, string shortDescription, string description, Category category,List<TestCase> testcases, bool isPublic = true)
         {
             Challenge duplication = Read((challenge) => challenge.Name == name).FirstOrDefault();
