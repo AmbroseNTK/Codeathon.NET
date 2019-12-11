@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyncContext.cs" />
     <EmbeddedResource Include="Components\CategoryEditor.resx">
       <DependentUpon>CategoryEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +171,9 @@
       <Project>{69595734-242b-4b63-8166-92539c4e8c56}</Project>
       <Name>Codeathon.DataModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear-loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

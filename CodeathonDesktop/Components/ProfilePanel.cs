@@ -28,18 +28,8 @@ namespace Codeathon.Desktop.Components
 
         public void GetOwnChallenge()
         {
-            List<object> dataset = new List<object>();
-            Service<AuthData>.Use().Get().Challenges.ToList().ForEach((challenge) =>
-            {
-                dataset.Add(new
-                {
-                    id = challenge.Id,
-                    name = challenge.Name,
-                    author = challenge.Owner.Profile.Username,
-                    description = challenge.ShortDescription
-                });
-            });
-            challengeExplore1.Dataset = dataset.ToArray();
+           
+            challengeExplore1.Dataset = Service<AuthData>.Use().Get().Challenges.ToList();
         }
 
     }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.formAssistant1 = new DevExpress.XtraBars.FormAssistant();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
@@ -50,12 +51,18 @@
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.barAuthButton = new DevExpress.XtraBars.BarButtonItem();
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            this.repositoryItemPictureEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             // 
             // fluentDesignFormContainer1
             // 
@@ -103,7 +110,7 @@
             this.menuCodeathon.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.btMenuProfile,
             this.btMenuContent});
-            this.menuCodeathon.Expanded = true;
+            this.menuCodeathon.Enabled = false;
             this.menuCodeathon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuCodeathon.ImageOptions.SvgImage")));
             this.menuCodeathon.Name = "menuCodeathon";
             this.menuCodeathon.Text = "Codeathon";
@@ -120,7 +127,7 @@
             this.btMenuContent.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.btMenuChallenge,
             this.btMenuCompetition});
-            this.btMenuContent.Expanded = true;
+            this.btMenuContent.Enabled = false;
             this.btMenuContent.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btMenuContent.ImageOptions.SvgImage")));
             this.btMenuContent.Name = "btMenuContent";
             this.btMenuContent.Text = "Your contents";
@@ -142,7 +149,7 @@
             // 
             this.menuChallenges.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.btMenuExploreChallenge});
-            this.menuChallenges.Expanded = true;
+            this.menuChallenges.Enabled = false;
             this.menuChallenges.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuChallenges.ImageOptions.SvgImage")));
             this.menuChallenges.Name = "menuChallenges";
             this.menuChallenges.Text = "Challenges";
@@ -158,7 +165,7 @@
             this.menuCompetition.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.btMenuJoinCompetition,
             this.btMenuEnrollCompetition});
-            this.menuCompetition.Expanded = true;
+            this.menuCompetition.Enabled = false;
             this.menuCompetition.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuCompetition.ImageOptions.SvgImage")));
             this.menuCompetition.Name = "menuCompetition";
             this.menuCompetition.Text = "Competition";
@@ -179,7 +186,7 @@
             // 
             this.menuCommunity.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.btFindNewFriends});
-            this.menuCommunity.Expanded = true;
+            this.menuCommunity.Enabled = false;
             this.menuCommunity.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menuCommunity.ImageOptions.SvgImage")));
             this.menuCommunity.Name = "menuCommunity";
             this.menuCommunity.Text = "Community";
@@ -197,6 +204,8 @@
             this.barAuthButton});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
+            this.fluentDesignFormControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemPictureEdit1});
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(2274, 77);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
@@ -224,6 +233,7 @@
             this.NavigationControl = this.accordionControl1;
             this.Text = "Codeathon Desktop";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(83)))));
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             this.fluentDesignFormContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
@@ -259,6 +269,7 @@
         private DevExpress.XtraBars.BarButtonItem barAuthButton;
         private DevExpress.XtraEditors.PanelControl mainPanel;
         private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
     }
 }
 

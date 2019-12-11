@@ -47,7 +47,7 @@ namespace Codeathon.API.Utilities
         {
             if (filter != null)
             {
-                return GetDbSet().Where((entity) => filter(entity));
+                return GetDbSet().ToList().Where((entity) => filter(entity));
             }
             return GetDbSet().ToList<T>();
         }

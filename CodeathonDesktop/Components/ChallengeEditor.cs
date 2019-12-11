@@ -24,11 +24,11 @@ namespace Codeathon.Desktop.Components
 
         public class TestcaseEntity
         {
-            public int Id { get; set; }
+            public string Id { get; set; }
             public string Input { get; set; }
             public string ExpectedOutput { get; set; }
-            public decimal Timeout { get; set; }
-            public bool IsPublic { get; set; }
+            public int Timeout { get; set; }
+            public bool AllowView { get; set; }
         }
 
         List<TestcaseEntity> datasource;
@@ -48,15 +48,10 @@ namespace Codeathon.Desktop.Components
             dataTable.Columns.Add("Input");
             dataTable.Columns.Add("ExpectedOutput");
             dataTable.Columns.Add("Timeout");
-            dataTable.Columns.Add("IsPublic");
+            dataTable.Columns.Add("AllowView");
             gridControl1.DataSource = dataTable;
 
-            comboChallengeId.Properties.Items.Add("CREATE NEW CHALLENGE");
-            challenges = Service<ChallengeService>.Use().GetOwnChallenges();
-            challenges.ForEach((challenge) =>
-            {
-                comboChallengeId.Properties.Items.Add(challenge.Name);
-            });
+            LoadChallenges();
 
             comboChallengeId.SelectedIndexChanged += ComboChallengeId_SelectedIndexChanged;
             comboChallengeId.SelectedIndex = 0;
@@ -81,10 +76,26 @@ namespace Codeathon.Desktop.Components
             if (comboChallengeId.SelectedIndex != 0)
             {
                 selectedChallenge = challenges[comboChallengeId.SelectedIndex-1];
+                textName.Text = selectedChallenge.Name;
+                textTitle.Text = selectedChallenge.Title;
+                textShortDescription.Text = selectedChallenge.ShortDescription;
+                textDescription.Text = selectedChallenge.Description;
+                comboCategory.SelectedIndex = comboCategory.Properties.Items.IndexOf(selectedChallenge.Category.Name);
+                btUpdate.Enabled = true;
+                btDelete.Enabled = true;
+                btCreate.Enabled = false;
             }
             else
             {
                 selectedChallenge = new Challenge();
+
+                textName.Text = "";
+                textTitle.Text = "";
+                textShortDescription.Text = "";
+                textDescription.Text = "";
+                comboCategory.SelectedIndex = 0;
+                btCreate.Enabled = true;
+                btUpdate.Enabled = false;
             }
             LoadTestCases();
         }
@@ -101,7 +112,30 @@ namespace Codeathon.Desktop.Components
 
         private void btCreate_Click(object sender, EventArgs e)
         {
-            //Service<ChallengeService>.Use().Create(textName.Text,textTitle.Text,textShortDescription.Text,textDescription.Text,selectedCategory)
+            List<TestCase> testcases = new List<TestCase>();
+            foreach(DataRow row in dataTable.Rows)
+            {
+                if (row.ItemArray[0].ToString() == "")
+                {
+                    testcases.Add(new TestCase()
+                    {
+                        Input = row.ItemArray[1].ToString(),
+                        ExpectedOutput = row.ItemArray[2].ToString(),
+                        Timeout = int.Parse(row.ItemArray[3].ToString()),
+                        AllowView = true
+                    });
+                }
+            }
+            Service<ChallengeService>.Use().Create(
+                textName.Text,
+                textTitle.Text,
+                textShortDescription.Text,
+                textDescription.Text,
+                selectedCategory,
+                testcases,
+                checkIsPublic.Checked
+                );
+            LoadChallenges();
         }
 
         private void LoadTestCases()
@@ -111,9 +145,66 @@ namespace Codeathon.Desktop.Components
             {
                 selectedChallenge.TestCases.ToList().ForEach((testcase) =>
                 {
-                    dataTable.Rows.Add(testcase);
+
+                    dataTable.Rows.Add(new object[] { testcase.Id, testcase.Input, testcase.ExpectedOutput,testcase.Timeout, testcase.AllowView });
                 });
             }
+        }
+
+        private void LoadChallenges()
+        {
+            comboChallengeId.Properties.Items.Clear();
+            comboChallengeId.Properties.Items.Add("CREATE NEW CHALLENGE");
+            challenges = Service<ChallengeService>.Use().GetOwnChallenges();
+       
+            challenges.ForEach((challenge) =>
+            {
+                comboChallengeId.Properties.Items.Add(challenge.Name);
+            });
+
+            challengeExplore1.Dataset = challenges;
+        }
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+            if (selectedChallenge != null)
+            {
+                selectedChallenge.Title = textTitle.Text;
+                selectedChallenge.ShortDescription = textShortDescription.Text;
+                selectedChallenge.Description = textDescription.Text;
+                selectedChallenge.Category = selectedCategory;
+                Service<ChallengeService>.Use().Update(selectedChallenge);
+     
+            }
+            foreach (DataRow row in dataTable.Rows)
+            {
+                if (row.ItemArray[0].ToString() != "")
+                {
+                    TestCase testCase = Service<TestcaseService>.Use().Read((test) => test.Id == int.Parse(row.ItemArray[0].ToString())).FirstOrDefault();
+                    if (testCase != null)
+                    {
+                        testCase.Input = row.ItemArray[1].ToString();
+                        testCase.ExpectedOutput = row.ItemArray[2].ToString();
+                        testCase.Timeout = int.Parse(row.ItemArray[3].ToString());
+                        Service<TestcaseService>.Use().Update(int.Parse(row.ItemArray[0].ToString()), testCase);
+                        Service<TestcaseService>.Use().SaveChanges();
+                    }
+
+                }
+                else
+                {
+                    selectedChallenge.TestCases.Add(new TestCase()
+                    {
+                        Input = row.ItemArray[1].ToString(),
+                        ExpectedOutput = row.ItemArray[2].ToString(),
+                        Timeout = int.Parse(row.ItemArray[3].ToString()),
+                        AllowView = true
+                    });
+                    Service<TestcaseService>.Use().SaveChanges();
+                }
+            }
+            LoadChallenges();
+            LoadTestCases();
         }
     }
 }

@@ -82,6 +82,7 @@ namespace Codeathon.API.Services
 
         public List<Category> GetOwnCategories()
         {
+           
             return Service<AuthData>.Use().Get().Categories.ToList();
         }
 

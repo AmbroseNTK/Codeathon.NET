@@ -43,6 +43,8 @@
             this.IsPublic = new DevExpress.XtraGrid.Columns.GridColumn();
             this.editIsPublic = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
+            this.comboCategory = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.checkViewSolution = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.checkIsPublic = new DevExpress.XtraEditors.CheckEdit();
@@ -62,12 +64,16 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.comboChallengeId = new DevExpress.XtraEditors.ComboBoxEdit();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.challengeExplore1 = new Codeathon.Desktop.Components.ChallengeExplore();
             this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.categoryEditor1 = new Codeathon.Desktop.Components.CategoryEditor();
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.comboCategory = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage1.SuspendLayout();
@@ -79,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.editIsPublic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
             this.tablePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkViewSolution.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkIsPublic.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).BeginInit();
@@ -88,9 +95,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.textTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboChallengeId.Properties)).BeginInit();
+            this.tabNavigationPage2.SuspendLayout();
             this.tabNavigationPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboCategory.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPane1
@@ -153,7 +162,7 @@
             this.gridView1.OptionsCustomization.AllowRowSizing = true;
             this.gridView1.OptionsDetail.AllowExpandEmptyDetails = true;
             this.gridView1.OptionsEditForm.ActionOnModifiedRowChange = DevExpress.XtraGrid.Views.Grid.EditFormModifiedAction.Save;
-            this.gridView1.OptionsEditForm.BindingMode = DevExpress.XtraGrid.Views.Grid.EditFormBindingMode.Cached;
+            this.gridView1.OptionsEditForm.BindingMode = DevExpress.XtraGrid.Views.Grid.EditFormBindingMode.Direct;
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
             this.gridView1.OptionsView.RowAutoHeight = true;
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
@@ -281,6 +290,27 @@
             this.tablePanel1.Size = new System.Drawing.Size(2196, 916);
             this.tablePanel1.TabIndex = 1;
             // 
+            // comboCategory
+            // 
+            this.tablePanel1.SetColumn(this.comboCategory, 2);
+            this.comboCategory.Location = new System.Drawing.Point(1101, 137);
+            this.comboCategory.Name = "comboCategory";
+            this.comboCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.tablePanel1.SetRow(this.comboCategory, 2);
+            this.comboCategory.Size = new System.Drawing.Size(909, 50);
+            this.comboCategory.TabIndex = 16;
+            // 
+            // labelControl8
+            // 
+            this.tablePanel1.SetColumn(this.labelControl8, 1);
+            this.labelControl8.Location = new System.Drawing.Point(95, 145);
+            this.labelControl8.Name = "labelControl8";
+            this.tablePanel1.SetRow(this.labelControl8, 2);
+            this.labelControl8.Size = new System.Drawing.Size(196, 34);
+            this.labelControl8.TabIndex = 15;
+            this.labelControl8.Text = "Select Category";
+            // 
             // checkViewSolution
             // 
             this.tablePanel1.SetColumn(this.checkViewSolution, 2);
@@ -349,6 +379,7 @@
             this.btUpdate.Size = new System.Drawing.Size(187, 57);
             this.btUpdate.TabIndex = 0;
             this.btUpdate.Text = "Update";
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // btDelete
             // 
@@ -460,48 +491,85 @@
             // tabNavigationPage2
             // 
             this.tabNavigationPage2.Caption = "Manage";
+            this.tabNavigationPage2.Controls.Add(this.gridControl2);
+            this.tabNavigationPage2.Controls.Add(this.challengeExplore1);
             this.tabNavigationPage2.Name = "tabNavigationPage2";
-            this.tabNavigationPage2.Size = new System.Drawing.Size(2040, 1226);
+            this.tabNavigationPage2.Size = new System.Drawing.Size(2196, 1442);
+            // 
+            // challengeExplore1
+            // 
+            this.challengeExplore1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.challengeExplore1.Location = new System.Drawing.Point(0, 0);
+            this.challengeExplore1.Name = "challengeExplore1";
+            this.challengeExplore1.Size = new System.Drawing.Size(2196, 571);
+            this.challengeExplore1.TabIndex = 0;
             // 
             // tabNavigationPage3
             // 
             this.tabNavigationPage3.Caption = "Categories";
             this.tabNavigationPage3.Controls.Add(this.categoryEditor1);
             this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(2040, 1226);
+            this.tabNavigationPage3.Size = new System.Drawing.Size(2196, 1442);
             // 
             // categoryEditor1
             // 
             this.categoryEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.categoryEditor1.Location = new System.Drawing.Point(0, 0);
             this.categoryEditor1.Name = "categoryEditor1";
-            this.categoryEditor1.Size = new System.Drawing.Size(2040, 1226);
+            this.categoryEditor1.Size = new System.Drawing.Size(2196, 1442);
             this.categoryEditor1.TabIndex = 0;
             // 
             // xtraOpenFileDialog1
             // 
             this.xtraOpenFileDialog1.FileName = "xtraOpenFileDialog1";
             // 
-            // labelControl8
+            // gridControl2
             // 
-            this.tablePanel1.SetColumn(this.labelControl8, 1);
-            this.labelControl8.Location = new System.Drawing.Point(95, 145);
-            this.labelControl8.Name = "labelControl8";
-            this.tablePanel1.SetRow(this.labelControl8, 2);
-            this.labelControl8.Size = new System.Drawing.Size(196, 34);
-            this.labelControl8.TabIndex = 15;
-            this.labelControl8.Text = "Select Category";
+            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl2.Location = new System.Drawing.Point(0, 571);
+            this.gridControl2.MainView = this.gridView2;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(2196, 871);
+            this.gridControl2.TabIndex = 1;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
             // 
-            // comboCategory
+            // gridView2
             // 
-            this.tablePanel1.SetColumn(this.comboCategory, 2);
-            this.comboCategory.Location = new System.Drawing.Point(1101, 137);
-            this.comboCategory.Name = "comboCategory";
-            this.comboCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.tablePanel1.SetRow(this.comboCategory, 2);
-            this.comboCategory.Size = new System.Drawing.Size(909, 50);
-            this.comboCategory.TabIndex = 16;
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
+            this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.Name = "gridView2";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "ID";
+            this.gridColumn1.FieldName = "Id";
+            this.gridColumn1.MinWidth = 50;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 187;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "gridColumn2";
+            this.gridColumn2.MinWidth = 50;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 187;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "gridColumn3";
+            this.gridColumn3.MinWidth = 50;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 187;
             // 
             // ChallengeEditor
             // 
@@ -522,6 +590,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).EndInit();
             this.tablePanel1.ResumeLayout(false);
             this.tablePanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkViewSolution.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkIsPublic.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).EndInit();
@@ -531,9 +600,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.textTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboChallengeId.Properties)).EndInit();
+            this.tabNavigationPage2.ResumeLayout(false);
             this.tabNavigationPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboCategory.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -579,5 +650,11 @@
         private DevExpress.XtraEditors.TextEdit textTitle;
         private DevExpress.XtraEditors.ComboBoxEdit comboCategory;
         private DevExpress.XtraEditors.LabelControl labelControl8;
+        private ChallengeExplore challengeExplore1;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }

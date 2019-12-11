@@ -16,19 +16,26 @@ using Codeathon.API.Utilities;
 using Codeathon.DataModel;
 
 using DevExpress.XtraEditors;
+using System.Threading;
 
 namespace Codeathon.Desktop
 {
+   
+
     public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         ImageList imageList = new ImageList();
-       
+        
 
         public MainForm()
         {
             InitializeComponent();
+
+            Service<SyncContext>.Use();
+
             Service<Notificator>.Use().OnPushNotification += MainForm_OnPushNotification;
             Service<AuthData>.Use().OnAuthenticated += MainForm_OnAuthenticated;
+            
 
             imageList.ImageSize = new Size(25, 25);
         
@@ -36,11 +43,20 @@ namespace Codeathon.Desktop
 
         private void MainForm_OnAuthenticated(User auth)
         {
-            
-            imageList.Images.Add("avatar", auth.Profile.Avatar.MakeImage());
-            barAuthButton.ImageOptions.Image = imageList.Images["avatar"];
-            
-            barAuthButton.Caption = auth.Profile.Username;
+
+            if (auth != null)
+            {
+                imageList.Images.Add("avatar", auth.Profile.Avatar.MakeImage());
+                barAuthButton.ImageOptions.Image = imageList.Images["avatar"];
+
+                barAuthButton.Caption = auth.Profile.Username;
+                menuChallenges.Enabled = true;
+                menuCodeathon.Enabled = true;
+                menuCommunity.Enabled = true;
+                menuCompetition.Enabled = true;
+                btMenuContent.Enabled = true;
+            }
+
         }
 
         private void MainForm_OnPushNotification(Notification notification)

@@ -58,6 +58,7 @@
     <Compile Include="Services\ChallengeService.cs" />
     <Compile Include="Services\LoggerService.cs" />
     <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\TestcaseService.cs" />
     <Compile Include="Utilities\AbstractCRUD.cs" />
     <Compile Include="Utilities\AuthData.cs" />
     <Compile Include="Utilities\FileStorage.cs" />

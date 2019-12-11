@@ -49,7 +49,41 @@ namespace Codeathon.API.Services
         {
             return Service<AuthData>.Use().Get().Challenges.ToList();
         }
-        public void Create(string name,string title, string shortDescription, string description, Category category,List<TestCase> testcases, bool isPublic = true)
+        public void CreateNew(Challenge newChallenge)
+        {
+            Challenge duplication = Read((challenge) => challenge.Name == newChallenge.Name).FirstOrDefault();
+            if (duplication != null)
+            {
+                Service<Notificator>.Use().Push(new Notification()
+                {
+                    Status = NotificationStatus.Error,
+                    Info = newChallenge.Name + " already existed"
+                });
+                return;
+            }
+           
+            try
+            {
+                Create(newChallenge);
+                SaveChanges();
+                Service<Notificator>.Use().Push(new Notification()
+                {
+                    Status = NotificationStatus.Info,
+                    Info = "Create " + newChallenge.Name + " successfully"
+                });
+                return;
+            }
+            catch (Exception ex)
+            {
+                Service<Notificator>.Use().Push(new Notification()
+                {
+                    Status = NotificationStatus.Error,
+                    Info = ex.Message
+                });
+                return;
+            }
+        }
+        public void Create(string name,string title, string shortDescription, string description, Category category, List<TestCase> testcases, bool isPublic = true)
         {
             Challenge duplication = Read((challenge) => challenge.Name == name).FirstOrDefault();
             if(duplication != null)
@@ -71,7 +105,8 @@ namespace Codeathon.API.Services
                 Category = category,
                 Owner = Service<AuthData>.Use().Get(),
                 IsPublic = isPublic,
-                TestCases = testcases
+                TestCases = testcases,
+                LastUpdate = DateTime.Now
             };
             try
             {
@@ -94,12 +129,18 @@ namespace Codeathon.API.Services
                 return;
             }
         }
-        public void Update(Category category)
+        public void Update(Challenge challenge)
         {
+            challenge.LastUpdate = DateTime.Now;
             try
             {
-                Update(category);
+                Update(challenge.Id,challenge);
                 SaveChanges();
+                Service<Notificator>.Use().Push(new Notification()
+                {
+                    Status = NotificationStatus.Info,
+                    Info = "Update successfully"
+                });
             }
             catch (Exception ex)
             {

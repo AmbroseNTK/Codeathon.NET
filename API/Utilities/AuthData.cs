@@ -21,7 +21,17 @@ namespace Codeathon.API.Utilities
             OnAuthenticated?.Invoke(user);
         }
 
-        public User Get() => authUser;
+        public User Get() {
+            if (authUser == null)
+            {
+                Service<Notificator>.Use().Push(new Notification()
+                {
+                    Status = NotificationStatus.Error,
+                    Info = "Authentication failed"
+                });
+            }
+            return authUser;
+       }
 
     }
 }

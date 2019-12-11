@@ -15,6 +15,7 @@ namespace Codeathon.Desktop.Components
 {
     public partial class LoginPanel : DevExpress.XtraEditors.XtraUserControl
     {
+       
         OpenFileDialog ofd;
         string avatar = "";
         public LoginPanel()
@@ -31,7 +32,8 @@ namespace Codeathon.Desktop.Components
 
         private void BtLogin_Click(object sender, EventArgs e)
         {
-            Service<UserService>.Use().Login(tbEmail.Text, tbPassword.Text);
+           
+               Service<UserService>.Use().Login(tbEmail.Text, tbPassword.Text);  
         }
 
         private void BtRegister_Click(object sender, EventArgs e)
