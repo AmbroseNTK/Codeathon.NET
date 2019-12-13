@@ -64,16 +64,16 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.comboChallengeId = new DevExpress.XtraEditors.ComboBoxEdit();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.challengeExplore1 = new Codeathon.Desktop.Components.ChallengeExplore();
-            this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.categoryEditor1 = new Codeathon.Desktop.Components.CategoryEditor();
-            this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.challengeExplore1 = new Codeathon.Desktop.Components.ChallengeExplore();
+            this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.categoryEditor1 = new Codeathon.Desktop.Components.CategoryEditor();
+            this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage1.SuspendLayout();
@@ -96,10 +96,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.textName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboChallengeId.Properties)).BeginInit();
             this.tabNavigationPage2.SuspendLayout();
-            this.tabNavigationPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            this.tabNavigationPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPane1
@@ -126,7 +126,7 @@
             this.tabNavigationPage1.Controls.Add(this.gridControl1);
             this.tabNavigationPage1.Controls.Add(this.tablePanel1);
             this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(2196, 1442);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(2196, 1426);
             // 
             // gridControl1
             // 
@@ -139,7 +139,7 @@
             this.editInput,
             this.editIsPublic,
             this.editTimeout});
-            this.gridControl1.Size = new System.Drawing.Size(2196, 526);
+            this.gridControl1.Size = new System.Drawing.Size(2196, 510);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -293,61 +293,61 @@
             // comboCategory
             // 
             this.tablePanel1.SetColumn(this.comboCategory, 2);
-            this.comboCategory.Location = new System.Drawing.Point(1101, 137);
+            this.comboCategory.Location = new System.Drawing.Point(1101, 133);
             this.comboCategory.Name = "comboCategory";
             this.comboCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.tablePanel1.SetRow(this.comboCategory, 2);
-            this.comboCategory.Size = new System.Drawing.Size(909, 50);
+            this.comboCategory.Size = new System.Drawing.Size(909, 59);
             this.comboCategory.TabIndex = 16;
             // 
             // labelControl8
             // 
             this.tablePanel1.SetColumn(this.labelControl8, 1);
-            this.labelControl8.Location = new System.Drawing.Point(95, 145);
+            this.labelControl8.Location = new System.Drawing.Point(95, 137);
             this.labelControl8.Name = "labelControl8";
             this.tablePanel1.SetRow(this.labelControl8, 2);
-            this.labelControl8.Size = new System.Drawing.Size(196, 34);
+            this.labelControl8.Size = new System.Drawing.Size(287, 50);
             this.labelControl8.TabIndex = 15;
             this.labelControl8.Text = "Select Category";
             // 
             // checkViewSolution
             // 
             this.tablePanel1.SetColumn(this.checkViewSolution, 2);
-            this.checkViewSolution.Location = new System.Drawing.Point(1101, 715);
+            this.checkViewSolution.Location = new System.Drawing.Point(1101, 708);
             this.checkViewSolution.Name = "checkViewSolution";
             this.checkViewSolution.Properties.Caption = "View solution";
             this.tablePanel1.SetRow(this.checkViewSolution, 8);
-            this.checkViewSolution.Size = new System.Drawing.Size(909, 45);
+            this.checkViewSolution.Size = new System.Drawing.Size(909, 59);
             this.checkViewSolution.TabIndex = 14;
             // 
             // labelControl7
             // 
             this.tablePanel1.SetColumn(this.labelControl7, 1);
-            this.labelControl7.Location = new System.Drawing.Point(95, 720);
+            this.labelControl7.Location = new System.Drawing.Point(95, 712);
             this.labelControl7.Name = "labelControl7";
             this.tablePanel1.SetRow(this.labelControl7, 8);
-            this.labelControl7.Size = new System.Drawing.Size(232, 34);
+            this.labelControl7.Size = new System.Drawing.Size(338, 50);
             this.labelControl7.TabIndex = 13;
             this.labelControl7.Text = "Allow view Solution";
             // 
             // checkIsPublic
             // 
             this.tablePanel1.SetColumn(this.checkIsPublic, 2);
-            this.checkIsPublic.Location = new System.Drawing.Point(1101, 650);
+            this.checkIsPublic.Location = new System.Drawing.Point(1101, 643);
             this.checkIsPublic.Name = "checkIsPublic";
             this.checkIsPublic.Properties.Caption = "Is Public";
             this.tablePanel1.SetRow(this.checkIsPublic, 7);
-            this.checkIsPublic.Size = new System.Drawing.Size(909, 45);
+            this.checkIsPublic.Size = new System.Drawing.Size(909, 59);
             this.checkIsPublic.TabIndex = 12;
             // 
             // labelControl6
             // 
             this.tablePanel1.SetColumn(this.labelControl6, 1);
-            this.labelControl6.Location = new System.Drawing.Point(95, 655);
+            this.labelControl6.Location = new System.Drawing.Point(95, 647);
             this.labelControl6.Name = "labelControl6";
             this.tablePanel1.SetRow(this.labelControl6, 7);
-            this.labelControl6.Size = new System.Drawing.Size(97, 34);
+            this.labelControl6.Size = new System.Drawing.Size(145, 50);
             this.labelControl6.TabIndex = 11;
             this.labelControl6.Text = "Is Public";
             // 
@@ -403,89 +403,89 @@
             // textShortDescription
             // 
             this.tablePanel1.SetColumn(this.textShortDescription, 2);
-            this.textShortDescription.Location = new System.Drawing.Point(1101, 332);
+            this.textShortDescription.Location = new System.Drawing.Point(1101, 328);
             this.textShortDescription.Name = "textShortDescription";
             this.tablePanel1.SetRow(this.textShortDescription, 5);
-            this.textShortDescription.Size = new System.Drawing.Size(909, 50);
+            this.textShortDescription.Size = new System.Drawing.Size(909, 59);
             this.textShortDescription.TabIndex = 8;
             // 
             // textTitle
             // 
             this.tablePanel1.SetColumn(this.textTitle, 2);
-            this.textTitle.Location = new System.Drawing.Point(1101, 267);
+            this.textTitle.Location = new System.Drawing.Point(1101, 263);
             this.textTitle.Name = "textTitle";
             this.tablePanel1.SetRow(this.textTitle, 4);
-            this.textTitle.Size = new System.Drawing.Size(909, 50);
+            this.textTitle.Size = new System.Drawing.Size(909, 59);
             this.textTitle.TabIndex = 7;
             // 
             // textName
             // 
             this.tablePanel1.SetColumn(this.textName, 2);
-            this.textName.Location = new System.Drawing.Point(1101, 202);
+            this.textName.Location = new System.Drawing.Point(1101, 198);
             this.textName.Name = "textName";
             this.tablePanel1.SetRow(this.textName, 3);
-            this.textName.Size = new System.Drawing.Size(909, 50);
+            this.textName.Size = new System.Drawing.Size(909, 59);
             this.textName.TabIndex = 6;
             // 
             // labelControl5
             // 
             this.tablePanel1.SetColumn(this.labelControl5, 1);
-            this.labelControl5.Location = new System.Drawing.Point(95, 498);
+            this.labelControl5.Location = new System.Drawing.Point(95, 490);
             this.labelControl5.Name = "labelControl5";
             this.tablePanel1.SetRow(this.labelControl5, 6);
-            this.labelControl5.Size = new System.Drawing.Size(139, 34);
+            this.labelControl5.Size = new System.Drawing.Size(205, 50);
             this.labelControl5.TabIndex = 5;
             this.labelControl5.Text = "Description";
             // 
             // labelControl4
             // 
             this.tablePanel1.SetColumn(this.labelControl4, 1);
-            this.labelControl4.Location = new System.Drawing.Point(95, 340);
+            this.labelControl4.Location = new System.Drawing.Point(95, 332);
             this.labelControl4.Name = "labelControl4";
             this.tablePanel1.SetRow(this.labelControl4, 5);
-            this.labelControl4.Size = new System.Drawing.Size(211, 34);
+            this.labelControl4.Size = new System.Drawing.Size(310, 50);
             this.labelControl4.TabIndex = 4;
             this.labelControl4.Text = "Short Description";
             // 
             // labelControl3
             // 
             this.tablePanel1.SetColumn(this.labelControl3, 1);
-            this.labelControl3.Location = new System.Drawing.Point(95, 275);
+            this.labelControl3.Location = new System.Drawing.Point(95, 267);
             this.labelControl3.Name = "labelControl3";
             this.tablePanel1.SetRow(this.labelControl3, 4);
-            this.labelControl3.Size = new System.Drawing.Size(52, 34);
+            this.labelControl3.Size = new System.Drawing.Size(75, 50);
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Title";
             // 
             // labelControl2
             // 
             this.tablePanel1.SetColumn(this.labelControl2, 1);
-            this.labelControl2.Location = new System.Drawing.Point(95, 210);
+            this.labelControl2.Location = new System.Drawing.Point(95, 202);
             this.labelControl2.Name = "labelControl2";
             this.tablePanel1.SetRow(this.labelControl2, 3);
-            this.labelControl2.Size = new System.Drawing.Size(71, 34);
+            this.labelControl2.Size = new System.Drawing.Size(106, 50);
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Name";
             // 
             // labelControl1
             // 
             this.tablePanel1.SetColumn(this.labelControl1, 1);
-            this.labelControl1.Location = new System.Drawing.Point(95, 80);
+            this.labelControl1.Location = new System.Drawing.Point(95, 72);
             this.labelControl1.Name = "labelControl1";
             this.tablePanel1.SetRow(this.labelControl1, 1);
-            this.labelControl1.Size = new System.Drawing.Size(232, 34);
+            this.labelControl1.Size = new System.Drawing.Size(340, 50);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Select Challenge Id";
             // 
             // comboChallengeId
             // 
             this.tablePanel1.SetColumn(this.comboChallengeId, 2);
-            this.comboChallengeId.Location = new System.Drawing.Point(1101, 72);
+            this.comboChallengeId.Location = new System.Drawing.Point(1101, 68);
             this.comboChallengeId.Name = "comboChallengeId";
             this.comboChallengeId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.tablePanel1.SetRow(this.comboChallengeId, 1);
-            this.comboChallengeId.Size = new System.Drawing.Size(909, 50);
+            this.comboChallengeId.Size = new System.Drawing.Size(909, 59);
             this.comboChallengeId.TabIndex = 0;
             // 
             // tabNavigationPage2
@@ -495,33 +495,6 @@
             this.tabNavigationPage2.Controls.Add(this.challengeExplore1);
             this.tabNavigationPage2.Name = "tabNavigationPage2";
             this.tabNavigationPage2.Size = new System.Drawing.Size(2196, 1442);
-            // 
-            // challengeExplore1
-            // 
-            this.challengeExplore1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.challengeExplore1.Location = new System.Drawing.Point(0, 0);
-            this.challengeExplore1.Name = "challengeExplore1";
-            this.challengeExplore1.Size = new System.Drawing.Size(2196, 571);
-            this.challengeExplore1.TabIndex = 0;
-            // 
-            // tabNavigationPage3
-            // 
-            this.tabNavigationPage3.Caption = "Categories";
-            this.tabNavigationPage3.Controls.Add(this.categoryEditor1);
-            this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(2196, 1442);
-            // 
-            // categoryEditor1
-            // 
-            this.categoryEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.categoryEditor1.Location = new System.Drawing.Point(0, 0);
-            this.categoryEditor1.Name = "categoryEditor1";
-            this.categoryEditor1.Size = new System.Drawing.Size(2196, 1442);
-            this.categoryEditor1.TabIndex = 0;
-            // 
-            // xtraOpenFileDialog1
-            // 
-            this.xtraOpenFileDialog1.FileName = "xtraOpenFileDialog1";
             // 
             // gridControl2
             // 
@@ -571,6 +544,33 @@
             this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 187;
             // 
+            // challengeExplore1
+            // 
+            this.challengeExplore1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.challengeExplore1.Location = new System.Drawing.Point(0, 0);
+            this.challengeExplore1.Name = "challengeExplore1";
+            this.challengeExplore1.Size = new System.Drawing.Size(2196, 571);
+            this.challengeExplore1.TabIndex = 0;
+            // 
+            // tabNavigationPage3
+            // 
+            this.tabNavigationPage3.Caption = "Categories";
+            this.tabNavigationPage3.Controls.Add(this.categoryEditor1);
+            this.tabNavigationPage3.Name = "tabNavigationPage3";
+            this.tabNavigationPage3.Size = new System.Drawing.Size(2196, 1426);
+            // 
+            // categoryEditor1
+            // 
+            this.categoryEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.categoryEditor1.Location = new System.Drawing.Point(0, 0);
+            this.categoryEditor1.Name = "categoryEditor1";
+            this.categoryEditor1.Size = new System.Drawing.Size(2196, 1426);
+            this.categoryEditor1.TabIndex = 0;
+            // 
+            // xtraOpenFileDialog1
+            // 
+            this.xtraOpenFileDialog1.FileName = "xtraOpenFileDialog1";
+            // 
             // ChallengeEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -601,10 +601,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.textName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboChallengeId.Properties)).EndInit();
             this.tabNavigationPage2.ResumeLayout(false);
-            this.tabNavigationPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            this.tabNavigationPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }

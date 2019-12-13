@@ -68,22 +68,44 @@ namespace Codeathon.Desktop.Components
 
         private void ComboCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedCategory = categories[comboCategory.SelectedIndex];
+            try
+            {
+                selectedCategory = categories[comboCategory.SelectedIndex];
+            }
+            catch
+            {
+                selectedCategory = categories[0];
+            }
         }
 
         private void ComboChallengeId_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboChallengeId.SelectedIndex != 0)
             {
-                selectedChallenge = challenges[comboChallengeId.SelectedIndex-1];
+                try
+                {
+                    selectedChallenge = challenges[comboChallengeId.SelectedIndex - 1];
+                }
+                catch
+                {
+                    selectedChallenge = new Challenge();
+                }
                 textName.Text = selectedChallenge.Name;
                 textTitle.Text = selectedChallenge.Title;
                 textShortDescription.Text = selectedChallenge.ShortDescription;
                 textDescription.Text = selectedChallenge.Description;
-                comboCategory.SelectedIndex = comboCategory.Properties.Items.IndexOf(selectedChallenge.Category.Name);
+                try
+                {
+                    comboCategory.SelectedIndex = comboCategory.Properties.Items.IndexOf(selectedChallenge.Category.Name);
+                }
+                catch
+                {
+                    comboCategory.SelectedIndex = 0;
+                }
                 btUpdate.Enabled = true;
                 btDelete.Enabled = true;
                 btCreate.Enabled = false;
+
             }
             else
             {

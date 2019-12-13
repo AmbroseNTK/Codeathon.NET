@@ -173,15 +173,15 @@
             this.tileViewColumn1});
             this.tileView1.GridControl = this.gridControl1;
             this.tileView1.Name = "tileView1";
-            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(652, 312);
+            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(652, 224);
             this.tileView1.OptionsTiles.RowCount = 0;
             this.tileView1.TileColumns.Add(tableColumnDefinition1);
             this.tileView1.TileColumns.Add(tableColumnDefinition2);
             this.tileView1.TileColumns.Add(tableColumnDefinition3);
-            tableRowDefinition1.Length.Value = 36D;
-            tableRowDefinition2.Length.Value = 36D;
-            tableRowDefinition3.Length.Value = 36D;
-            tableRowDefinition4.Length.Value = 36D;
+            tableRowDefinition1.Length.Value = 52D;
+            tableRowDefinition2.Length.Value = 52D;
+            tableRowDefinition3.Length.Value = 52D;
+            tableRowDefinition4.Length.Value = 52D;
             this.tileView1.TileRows.Add(tableRowDefinition1);
             this.tileView1.TileRows.Add(tableRowDefinition2);
             this.tileView1.TileRows.Add(tableRowDefinition3);
@@ -299,7 +299,7 @@
             this.layoutViewField_id.Location = new System.Drawing.Point(0, 0);
             this.layoutViewField_id.Name = "layoutViewField_id";
             this.layoutViewField_id.Size = new System.Drawing.Size(359, 54);
-            this.layoutViewField_id.TextSize = new System.Drawing.Size(145, 34);
+            this.layoutViewField_id.TextSize = new System.Drawing.Size(214, 50);
             // 
             // Name
             // 
@@ -317,7 +317,7 @@
             this.layoutViewField_Name.Location = new System.Drawing.Point(0, 54);
             this.layoutViewField_Name.Name = "layoutViewField_Name";
             this.layoutViewField_Name.Size = new System.Drawing.Size(359, 54);
-            this.layoutViewField_Name.TextSize = new System.Drawing.Size(145, 34);
+            this.layoutViewField_Name.TextSize = new System.Drawing.Size(214, 50);
             // 
             // Title
             // 
@@ -334,7 +334,7 @@
             this.layoutViewField_Title.Location = new System.Drawing.Point(0, 108);
             this.layoutViewField_Title.Name = "layoutViewField_Title";
             this.layoutViewField_Title.Size = new System.Drawing.Size(359, 54);
-            this.layoutViewField_Title.TextSize = new System.Drawing.Size(145, 34);
+            this.layoutViewField_Title.TextSize = new System.Drawing.Size(214, 50);
             // 
             // ShortDescription
             // 
@@ -352,7 +352,7 @@
             this.layoutViewField_ShortDescription.Location = new System.Drawing.Point(0, 162);
             this.layoutViewField_ShortDescription.Name = "layoutViewField_ShortDescription";
             this.layoutViewField_ShortDescription.Size = new System.Drawing.Size(359, 54);
-            this.layoutViewField_ShortDescription.TextSize = new System.Drawing.Size(145, 34);
+            this.layoutViewField_ShortDescription.TextSize = new System.Drawing.Size(214, 50);
             // 
             // layoutViewCard1
             // 
