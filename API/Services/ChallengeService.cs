@@ -7,14 +7,27 @@ using System.Threading.Tasks;
 
 using Codeathon;
 using Codeathon.API;
+using Codeathon.API.Events;
 using Codeathon.API.Services;
 using Codeathon.API.Utilities;
 using Codeathon.DataModel;
+
+using RestSharp;
 
 namespace Codeathon.API.Services
 {
     public class ChallengeService : LogicCRUD<long, Challenge>
     {
+        public event TestCaseRunSuccessHandler OnTestRunSuccess;
+        public event TestCaseRunFailedHandler OnTestRunFailed;
+
+        public class SubmitResult
+        {
+            public string output { get; set; }
+            public string errors { get; set; }
+            public string time { get; set; }
+
+        }
         protected override DbContext GetContext()
         {
             return Service<CodeathonContainer>.Use();
@@ -48,6 +61,10 @@ namespace Codeathon.API.Services
         public List<Challenge> GetOwnChallenges()
         {
             return Service<AuthData>.Use().Get().Challenges.ToList();
+        }
+        public List<Challenge> GetPublicChallenges()
+        {
+            return Read((challenge) => challenge.IsPublic).ToList();
         }
         public void CreateNew(Challenge newChallenge)
         {
@@ -196,5 +213,44 @@ namespace Codeathon.API.Services
                 return;
             }
         }
+
+        public void SubmitSolution(Challenge challenge, int languageCode, string code, TestCaseRunSuccessHandler onSuccess =null, TestCaseRunFailedHandler onFailed = null)
+        {
+            var client = new RestClient("https://pm.itsstraining.edu.vn:8889");
+            List<TestCase> testcases = challenge.TestCases.ToList();
+            double totalTime = 0;
+            foreach(TestCase testcase in testcases)
+            {
+                var request = new RestRequest("compile", Method.POST);
+                request.AddParameter("language", languageCode.ToString());
+                request.AddParameter("code", code);
+                request.AddParameter("stdin", testcase.Input);
+                var response = client.Execute<SubmitResult>(request);
+                if (response.Data.errors !="")
+                {
+                    onFailed?.Invoke(response.Data.errors);
+                    return;
+                }
+                if (response.Data.output.Trim() == testcase.ExpectedOutput)
+                {
+                    totalTime += double.Parse(response.Data.time.Trim());
+                }
+                else
+                {
+                    if (testcase.AllowView)
+                    {
+                        onFailed?.Invoke("Your result: " + response.Data.output + "\nExpected: " + testcase.ExpectedOutput);
+                    }
+                    else
+                    {
+                        onFailed?.Invoke("Test failed");
+                    }
+                    return;
+                }
+            }
+            onSuccess?.Invoke(totalTime);
+            
+        }
+
     }
 }

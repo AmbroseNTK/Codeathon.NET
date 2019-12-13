@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caliburn.Micro.Platform, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.2.0.2\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dialogs.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -66,6 +69,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Zeroit.Framework.CodeEditor.TextEditor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a0cee1bfa120b953, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeroit.Framework.CodeEditor.TextEditor.1.0.0\lib\Zeroit.Framework.CodeEditor.TextEditor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CategoryEditor.cs">
@@ -73,6 +79,12 @@
     </Compile>
     <Compile Include="Components\CategoryEditor.Designer.cs">
       <DependentUpon>CategoryEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ChallengeCoding.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ChallengeCoding.Designer.cs">
+      <DependentUpon>ChallengeCoding.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\ChallengeEditor.cs">
       <SubType>UserControl</SubType>
@@ -85,6 +97,12 @@
     </Compile>
     <Compile Include="Components\ChallengeExplore.Designer.cs">
       <DependentUpon>ChallengeExplore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ChallengePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ChallengePanel.Designer.cs">
+      <DependentUpon>ChallengePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\LoginPanel.cs">
       <SubType>UserControl</SubType>
@@ -116,11 +134,17 @@
     <EmbeddedResource Include="Components\CategoryEditor.resx">
       <DependentUpon>CategoryEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\ChallengeCoding.resx">
+      <DependentUpon>ChallengeCoding.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\ChallengeEditor.resx">
       <DependentUpon>ChallengeEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ChallengeExplore.resx">
       <DependentUpon>ChallengeExplore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ChallengePanel.resx">
+      <DependentUpon>ChallengePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\LoginPanel.resx">
       <DependentUpon>LoginPanel.cs</DependentUpon>

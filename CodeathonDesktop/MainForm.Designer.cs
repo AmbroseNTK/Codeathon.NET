@@ -86,6 +86,7 @@
             // 
             this.loginPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPanel1.Location = new System.Drawing.Point(3, 3);
+            this.loginPanel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.loginPanel1.Name = "loginPanel1";
             this.loginPanel1.Size = new System.Drawing.Size(1738, 1375);
             this.loginPanel1.TabIndex = 0;
@@ -159,6 +160,7 @@
             this.btMenuExploreChallenge.Name = "btMenuExploreChallenge";
             this.btMenuExploreChallenge.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.btMenuExploreChallenge.Text = "Explore";
+            this.btMenuExploreChallenge.Click += new System.EventHandler(this.btMenuExploreChallenge_Click);
             // 
             // menuCompetition
             // 
@@ -221,12 +223,14 @@
             // 
             // MainForm
             // 
+            this.Appearance.Options.UseFont = true;
             this.ClientSize = new System.Drawing.Size(2274, 1458);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.Font = new System.Drawing.Font("Google Sans Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";

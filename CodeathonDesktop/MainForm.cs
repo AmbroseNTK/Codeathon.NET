@@ -76,5 +76,11 @@ namespace Codeathon.Desktop
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(new Components.ChallengeEditor() { Dock = DockStyle.Fill });
         }
+
+        private void btMenuExploreChallenge_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(new Components.ChallengePanel() { Dock = DockStyle.Fill });
+        }
     }
 }
