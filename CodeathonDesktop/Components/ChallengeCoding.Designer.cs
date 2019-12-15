@@ -37,7 +37,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.comboLanguage = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.btRun = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
@@ -66,6 +66,7 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage1.SuspendLayout();
@@ -73,11 +74,12 @@
             this.tablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboLanguage)).BeginInit();
             this.tabNavigationPage3.SuspendLayout();
             this.tabLeaderboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLeaderboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPane1
@@ -167,7 +169,7 @@
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 5;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemComboBox1});
+            this.comboLanguage});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -179,7 +181,7 @@
             this.bar2.FloatLocation = new System.Drawing.Point(128, 253);
             this.bar2.FloatSize = new System.Drawing.Size(810, 59);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem1, "", false, true, true, 129),
             new DevExpress.XtraBars.LinkPersistInfo(this.btRun),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
@@ -190,17 +192,17 @@
             // barEditItem1
             // 
             this.barEditItem1.Caption = "Language";
-            this.barEditItem1.Edit = this.repositoryItemComboBox1;
+            this.barEditItem1.Edit = this.comboLanguage;
             this.barEditItem1.Id = 4;
             this.barEditItem1.Name = "barEditItem1";
             this.barEditItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption;
             // 
-            // repositoryItemComboBox1
+            // comboLanguage
             // 
-            this.repositoryItemComboBox1.AutoHeight = false;
-            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboLanguage.AutoHeight = false;
+            this.comboLanguage.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            this.comboLanguage.Name = "comboLanguage";
             // 
             // btRun
             // 
@@ -480,6 +482,11 @@
             this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 187;
             // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            this.repositoryItemMemoEdit1.ReadOnly = true;
+            // 
             // ChallengeCoding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -495,12 +502,13 @@
             this.tablePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboLanguage)).EndInit();
             this.tabNavigationPage3.ResumeLayout(false);
             this.tabNavigationPage3.PerformLayout();
             this.tabLeaderboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridLeaderboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -526,7 +534,7 @@
         private DevExpress.Utils.Layout.TablePanel tablePanel1;
         private DevExpress.XtraEditors.MemoEdit tbDescription;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox comboLanguage;
         private DevExpress.XtraEditors.LabelControl lbLastUpdate;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl lbAuthor;
@@ -543,5 +551,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }

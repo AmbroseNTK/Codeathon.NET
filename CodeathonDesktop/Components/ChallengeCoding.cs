@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Codeathon.API.Services;
 using Codeathon.API.Utilities;
 using Codeathon.DataModel;
+using DevExpress.XtraEditors;
 
 namespace Codeathon.Desktop.Components
 {
@@ -20,8 +21,21 @@ namespace Codeathon.Desktop.Components
         public ChallengeCoding()
         {
             InitializeComponent();
+            Service<PLanguageService>.Use().Read().ToList().ForEach((language) =>
+            {
+                comboLanguage.Items.Add(language.Name);
+            });
+            comboLanguage.SelectedIndexChanged += ComboLanguage_SelectedIndexChanged;
         }
 
+        private void ComboLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBoxEdit comboBoxEdit = (sender as ComboBoxEdit);
+
+            selectedLanguageId = comboBoxEdit.SelectedIndex;
+        }
+
+        int selectedLanguageId = 0;
         Challenge challenge;
 
         public Challenge SelectedChallenge { set {
@@ -38,11 +52,11 @@ namespace Codeathon.Desktop.Components
 
         private void btRun_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Service<ChallengeService>.Use().SubmitSolution(challenge, 0, tbCode.Text,(execTime)=> {
+            Service<ChallengeService>.Use().SubmitSolution(challenge,selectedLanguageId, tbCode.Text,(execTime)=> {
                 Service<Notificator>.Use().Push(new Notification()
                 {
                     Status = NotificationStatus.Info,
-                    Info = "Challenge Completed in " + System.Math.Round(execTime / 1000, 2) + "s"
+                    Info = "Challenge Completed in " + execTime + "s"
                 });
             },
             (message)=> {

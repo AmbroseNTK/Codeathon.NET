@@ -12,6 +12,30 @@ namespace Codeathon.API.Services
 {
     public class PLanguageService : SimpleCRUD<long, PLanguage>
     {
+        public string[] languages =
+        {
+            "Python","Ruby","Clojure","PHP","Javascript",
+            "Scala","Go","C/C++","Java","VB.NET",
+            "C#","Bash","Objective-C","MySQL","Perl",
+            "Rust","Pascal"
+        };
+
+        public PLanguageService()
+        {
+            foreach(string language in languages)
+            {
+                if(Read((lang)=>lang.Name == language).ToList().FirstOrDefault() == null)
+                {
+                    Create(new PLanguage()
+                    {
+                        Name = language,
+                        Version = "1"
+                    });
+                }
+            }
+            SaveChanges();
+        }
+
         protected override DbContext GetContext()
         {
             return Service<CodeathonContainer>.Use();

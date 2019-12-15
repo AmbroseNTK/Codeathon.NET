@@ -82,7 +82,7 @@
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 100F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 35F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 40F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
             this.tablePanel1.Size = new System.Drawing.Size(1710, 631);
             this.tablePanel1.TabIndex = 2;
@@ -93,7 +93,7 @@
             this.stackPanel1.Controls.Add(this.btCreateCat);
             this.stackPanel1.Controls.Add(this.btUpdateCat);
             this.stackPanel1.Controls.Add(this.btDeleteCat);
-            this.stackPanel1.Location = new System.Drawing.Point(84, 513);
+            this.stackPanel1.Location = new System.Drawing.Point(84, 519);
             this.stackPanel1.Name = "stackPanel1";
             this.tablePanel1.SetRow(this.stackPanel1, 5);
             this.stackPanel1.Size = new System.Drawing.Size(645, 82);
@@ -152,48 +152,48 @@
             // labelControl3
             // 
             this.tablePanel1.SetColumn(this.labelControl3, 1);
-            this.labelControl3.Location = new System.Drawing.Point(84, 210);
+            this.labelControl3.Location = new System.Drawing.Point(84, 202);
             this.labelControl3.Name = "labelControl3";
             this.tablePanel1.SetRow(this.labelControl3, 3);
-            this.labelControl3.Size = new System.Drawing.Size(156, 34);
+            this.labelControl3.Size = new System.Drawing.Size(231, 50);
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "Cover Image";
             // 
             // textDescriptionCat
             // 
             this.tablePanel1.SetColumn(this.textDescriptionCat, 2);
-            this.textDescriptionCat.Location = new System.Drawing.Point(736, 137);
+            this.textDescriptionCat.Location = new System.Drawing.Point(736, 133);
             this.textDescriptionCat.Name = "textDescriptionCat";
             this.tablePanel1.SetRow(this.textDescriptionCat, 2);
-            this.textDescriptionCat.Size = new System.Drawing.Size(808, 50);
+            this.textDescriptionCat.Size = new System.Drawing.Size(808, 59);
             this.textDescriptionCat.TabIndex = 3;
             // 
             // textNameCat
             // 
             this.tablePanel1.SetColumn(this.textNameCat, 2);
-            this.textNameCat.Location = new System.Drawing.Point(736, 72);
+            this.textNameCat.Location = new System.Drawing.Point(736, 68);
             this.textNameCat.Name = "textNameCat";
             this.tablePanel1.SetRow(this.textNameCat, 1);
-            this.textNameCat.Size = new System.Drawing.Size(808, 50);
+            this.textNameCat.Size = new System.Drawing.Size(808, 59);
             this.textNameCat.TabIndex = 2;
             // 
             // labelControl2
             // 
             this.tablePanel1.SetColumn(this.labelControl2, 1);
-            this.labelControl2.Location = new System.Drawing.Point(84, 145);
+            this.labelControl2.Location = new System.Drawing.Point(84, 137);
             this.labelControl2.Name = "labelControl2";
             this.tablePanel1.SetRow(this.labelControl2, 2);
-            this.labelControl2.Size = new System.Drawing.Size(139, 34);
+            this.labelControl2.Size = new System.Drawing.Size(205, 50);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Description";
             // 
             // labelControl1
             // 
             this.tablePanel1.SetColumn(this.labelControl1, 1);
-            this.labelControl1.Location = new System.Drawing.Point(84, 80);
+            this.labelControl1.Location = new System.Drawing.Point(84, 72);
             this.labelControl1.Name = "labelControl1";
             this.tablePanel1.SetRow(this.labelControl1, 1);
-            this.labelControl1.Size = new System.Drawing.Size(71, 34);
+            this.labelControl1.Size = new System.Drawing.Size(106, 50);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Name";
             // 

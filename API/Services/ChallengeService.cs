@@ -248,7 +248,27 @@ namespace Codeathon.API.Services
                     return;
                 }
             }
-            onSuccess?.Invoke(totalTime);
+            try
+            {
+                Service<SolutionService>.Use().SubmitSolution(new Solution()
+                {
+                    User = Service<AuthData>.Use().Get(),
+                    Datetime = DateTime.Now,
+                    Challenge = challenge,
+                    PLanguage = Service<PLanguageService>.Use().Read((lang) => lang.Id == (languageCode+1)).FirstOrDefault(),
+                    ExecuteTime = totalTime.ToString(),
+                    SourceCode = code
+                });
+                onSuccess?.Invoke(totalTime);
+            }
+            catch (Exception ex)
+            {
+                Service<Notificator>.Use().Push(new Notification()
+                {
+                    Status = NotificationStatus.Error,
+                    Info = ex.Message
+                });
+            }
             
         }
 

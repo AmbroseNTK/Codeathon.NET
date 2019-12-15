@@ -30,16 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.challengeCoding1 = new Codeathon.Desktop.Components.ChallengeCoding();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.challengeExplore1 = new Codeathon.Desktop.Components.ChallengeExplore();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
@@ -51,33 +46,8 @@
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(724, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
             this.xtraTabControl1.Size = new System.Drawing.Size(1284, 1323);
             this.xtraTabControl1.TabIndex = 0;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
-            this.xtraTabPage2});
-            // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Controls.Add(this.challengeCoding1);
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1280, 1251);
-            this.xtraTabPage1.Text = "xtraTabPage1";
-            // 
-            // challengeCoding1
-            // 
-            this.challengeCoding1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.challengeCoding1.Location = new System.Drawing.Point(0, 0);
-            this.challengeCoding1.Name = "challengeCoding1";
-            this.challengeCoding1.Size = new System.Drawing.Size(1280, 1251);
-            this.challengeCoding1.TabIndex = 0;
-            // 
-            // xtraTabPage2
-            // 
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1280, 1251);
-            this.xtraTabPage2.Text = "xtraTabPage2";
             // 
             // dockManager1
             // 
@@ -143,8 +113,6 @@
             this.Size = new System.Drawing.Size(2008, 1323);
             this.Load += new System.EventHandler(this.ChallengePanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
@@ -155,9 +123,6 @@
         #endregion
 
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private ChallengeCoding challengeCoding1;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
