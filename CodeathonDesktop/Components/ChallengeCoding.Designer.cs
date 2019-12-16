@@ -66,6 +66,7 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
@@ -79,6 +80,7 @@
             this.tabLeaderboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLeaderboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -397,7 +399,7 @@
             this.tabLeaderboard.Caption = "Leaderboard";
             this.tabLeaderboard.Controls.Add(this.gridLeaderboard);
             this.tabLeaderboard.Name = "tabLeaderboard";
-            this.tabLeaderboard.Size = new System.Drawing.Size(1768, 1173);
+            this.tabLeaderboard.Size = new System.Drawing.Size(1768, 1157);
             // 
             // gridLeaderboard
             // 
@@ -406,7 +408,9 @@
             this.gridLeaderboard.MainView = this.gridView1;
             this.gridLeaderboard.MenuManager = this.barManager1;
             this.gridLeaderboard.Name = "gridLeaderboard";
-            this.gridLeaderboard.Size = new System.Drawing.Size(1768, 1173);
+            this.gridLeaderboard.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemMemoEdit2});
+            this.gridLeaderboard.Size = new System.Drawing.Size(1768, 1157);
             this.gridLeaderboard.TabIndex = 0;
             this.gridLeaderboard.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -423,8 +427,10 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView1.OptionsEditForm.ActionOnModifiedRowChange = DevExpress.XtraGrid.Views.Grid.EditFormModifiedAction.Nothing;
+            this.gridView1.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditForm;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsEditForm.BindingMode = DevExpress.XtraGrid.Views.Grid.EditFormBindingMode.Direct;
+            this.gridView1.OptionsEditForm.EditFormColumnCount = 2;
             this.gridView1.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
             // gridColumn1
@@ -474,13 +480,23 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Solution";
+            this.gridColumn4.ColumnEdit = this.repositoryItemMemoEdit2;
             this.gridColumn4.FieldName = "Solution";
             this.gridColumn4.MinWidth = 50;
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsEditForm.ColumnSpan = 2;
+            this.gridColumn4.OptionsEditForm.RowSpan = 7;
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 187;
+            // 
+            // repositoryItemMemoEdit2
+            // 
+            this.repositoryItemMemoEdit2.LinesCount = 20;
+            this.repositoryItemMemoEdit2.Name = "repositoryItemMemoEdit2";
+            this.repositoryItemMemoEdit2.ReadOnly = true;
+            this.repositoryItemMemoEdit2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             // 
             // repositoryItemMemoEdit1
             // 
@@ -508,6 +524,7 @@
             this.tabLeaderboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridLeaderboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
@@ -552,5 +569,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit2;
     }
 }

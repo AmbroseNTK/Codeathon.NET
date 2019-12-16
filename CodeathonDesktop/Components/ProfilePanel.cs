@@ -24,6 +24,11 @@ namespace Codeathon.Desktop.Components
         {
             InitializeComponent();
             GetOwnChallenge();
+
+            Reports.UserProfileReport profileReport = new Reports.UserProfileReport();
+            profileReport.Parameters[0].Value = Service<AuthData>.Use().Get().Email;
+            documentViewer1.DocumentSource = profileReport;
+
         }
 
         public void GetOwnChallenge()

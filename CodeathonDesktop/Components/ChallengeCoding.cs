@@ -18,6 +18,17 @@ namespace Codeathon.Desktop.Components
     public partial class ChallengeCoding : UserControl
     {
 
+        public class ChallengeResultEntity
+        {
+            public string Author { get; set; }
+            public decimal ExecTime { get; set; }
+            public string Solution { get; set; }
+            public DateTime Date { get; set; }
+
+            public string Language { get; set; }
+
+        }
+
         public ChallengeCoding()
         {
             InitializeComponent();
@@ -38,6 +49,7 @@ namespace Codeathon.Desktop.Components
         int selectedLanguageId = 0;
         Challenge challenge;
 
+
         public Challenge SelectedChallenge { set {
 
                 challenge = value;
@@ -46,6 +58,19 @@ namespace Codeathon.Desktop.Components
                 lbAuthor.Text = challenge.Owner.Email;
                 lbLastUpdate.Text = challenge.LastUpdate.ToShortDateString();
                 tbDescription.Text = challenge.Description;
+                List<ChallengeResultEntity> resultEntities = new List<ChallengeResultEntity>();
+                challenge.ChallengeResults.ToList().ForEach((result) =>
+                {
+                    resultEntities.Add(new ChallengeResultEntity()
+                    {
+                        Author = result.User.Email,
+                        Date = result.Datetime,
+                        ExecTime = decimal.Parse(result.ExecuteTime),
+                        Solution = result.SourceCode,
+                        Language = result.PLanguage.Name
+                    });
+                });
+                gridLeaderboard.DataSource = resultEntities;
                 
             }
         }
