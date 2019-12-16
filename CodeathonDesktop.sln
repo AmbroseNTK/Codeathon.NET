@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeathon.DataModel", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeathon.API", "API\Codeathon.API.csproj", "{0743B2E3-6657-495A-8CCC-1C5F03EB88DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeathon.WebAPI", "Codeathon.WebAPI\Codeathon.WebAPI.csproj", "{6CFCC81F-6938-4D25-9532-F5C7B3C51818}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codeathon.WebAPI", "Codeathon.WebAPI\Codeathon.WebAPI.csproj", "{6CFCC81F-6938-4D25-9532-F5C7B3C51818}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Codeathon.Desktop.Installer", "Codeathon.Desktop.Installer\Codeathon.Desktop.Installer.vdproj", "{F0024C87-0BC9-4F87-8B92-F7751D0512F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,8 @@ Global
 		{6CFCC81F-6938-4D25-9532-F5C7B3C51818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CFCC81F-6938-4D25-9532-F5C7B3C51818}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CFCC81F-6938-4D25-9532-F5C7B3C51818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0024C87-0BC9-4F87-8B92-F7751D0512F4}.Debug|Any CPU.ActiveCfg = Debug
+		{F0024C87-0BC9-4F87-8B92-F7751D0512F4}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
