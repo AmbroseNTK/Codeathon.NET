@@ -20,9 +20,9 @@ using System.Threading;
 
 namespace Codeathon.Desktop
 {
-   
 
-    public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
+
+    public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
         ImageList imageList = new ImageList();
         
@@ -55,6 +55,11 @@ namespace Codeathon.Desktop
                 menuCommunity.Enabled = true;
                 menuCompetition.Enabled = true;
                 btMenuContent.Enabled = true;
+
+                mainPanel.Controls.Clear();
+                mainPanel.Controls.Add(new Components.ProfilePanel() { Dock = DockStyle.Fill });
+                accordionControl1.ExpandAll();
+
             }
 
         }

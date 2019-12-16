@@ -104,6 +104,7 @@ namespace Codeathon.Desktop.Components
                 }
                 btUpdate.Enabled = true;
                 btDelete.Enabled = true;
+                btReport.Enabled = true;
                 btCreate.Enabled = false;
 
             }
@@ -118,6 +119,8 @@ namespace Codeathon.Desktop.Components
                 comboCategory.SelectedIndex = 0;
                 btCreate.Enabled = true;
                 btUpdate.Enabled = false;
+                btDelete.Enabled = false;
+                btReport.Enabled = false;
             }
             LoadTestCases();
         }
@@ -227,6 +230,19 @@ namespace Codeathon.Desktop.Components
             }
             LoadChallenges();
             LoadTestCases();
+        }
+
+        private void btReport_Click(object sender, EventArgs e)
+        {
+            if (selectedChallenge != null)
+            {
+                Reports.ChallengeReport challengeReport = new Reports.ChallengeReport();
+                challengeReport.Parameters[0].Value = selectedChallenge.Id;
+
+                documentViewer1.DocumentSource = challengeReport;
+                documentViewer1.InitiateDocumentCreation();
+                documentViewer1.Refresh();
+            }
         }
     }
 }

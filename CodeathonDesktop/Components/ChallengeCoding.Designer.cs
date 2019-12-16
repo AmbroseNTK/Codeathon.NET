@@ -130,12 +130,12 @@
             this.tablePanel1.Location = new System.Drawing.Point(0, 0);
             this.tablePanel1.Name = "tablePanel1";
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 25F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 200F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 70F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 70F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 70F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 70F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 70F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 500F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
             this.tablePanel1.Size = new System.Drawing.Size(1768, 1157);
             this.tablePanel1.TabIndex = 0;
@@ -144,7 +144,7 @@
             // 
             this.tablePanel1.SetColumn(this.tbDescription, 2);
             this.tbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbDescription.Location = new System.Drawing.Point(556, 326);
+            this.tbDescription.Location = new System.Drawing.Point(556, 353);
             this.tbDescription.MenuManager = this.barManager1;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Properties.ReadOnly = true;
@@ -311,7 +311,7 @@
             // lbLastUpdate
             // 
             this.tablePanel1.SetColumn(this.lbLastUpdate, 2);
-            this.lbLastUpdate.Location = new System.Drawing.Point(556, 265);
+            this.lbLastUpdate.Location = new System.Drawing.Point(556, 290);
             this.lbLastUpdate.Name = "lbLastUpdate";
             this.tablePanel1.SetRow(this.lbLastUpdate, 4);
             this.lbLastUpdate.Size = new System.Drawing.Size(0, 50);
@@ -320,7 +320,7 @@
             // labelControl9
             // 
             this.tablePanel1.SetColumn(this.labelControl9, 1);
-            this.labelControl9.Location = new System.Drawing.Point(114, 265);
+            this.labelControl9.Location = new System.Drawing.Point(114, 290);
             this.labelControl9.Name = "labelControl9";
             this.tablePanel1.SetRow(this.labelControl9, 4);
             this.labelControl9.Size = new System.Drawing.Size(209, 50);
@@ -330,7 +330,7 @@
             // lbAuthor
             // 
             this.tablePanel1.SetColumn(this.lbAuthor, 2);
-            this.lbAuthor.Location = new System.Drawing.Point(556, 200);
+            this.lbAuthor.Location = new System.Drawing.Point(556, 220);
             this.lbAuthor.Name = "lbAuthor";
             this.tablePanel1.SetRow(this.lbAuthor, 3);
             this.lbAuthor.Size = new System.Drawing.Size(0, 50);
@@ -339,7 +339,7 @@
             // lbTitle
             // 
             this.tablePanel1.SetColumn(this.lbTitle, 2);
-            this.lbTitle.Location = new System.Drawing.Point(556, 135);
+            this.lbTitle.Location = new System.Drawing.Point(556, 150);
             this.lbTitle.Name = "lbTitle";
             this.tablePanel1.SetRow(this.lbTitle, 2);
             this.lbTitle.Size = new System.Drawing.Size(0, 50);
@@ -348,7 +348,7 @@
             // lbName
             // 
             this.tablePanel1.SetColumn(this.lbName, 2);
-            this.lbName.Location = new System.Drawing.Point(556, 71);
+            this.lbName.Location = new System.Drawing.Point(556, 80);
             this.lbName.Name = "lbName";
             this.tablePanel1.SetRow(this.lbName, 1);
             this.lbName.Size = new System.Drawing.Size(0, 50);
@@ -357,7 +357,7 @@
             // labelControl4
             // 
             this.tablePanel1.SetColumn(this.labelControl4, 1);
-            this.labelControl4.Location = new System.Drawing.Point(114, 548);
+            this.labelControl4.Location = new System.Drawing.Point(114, 575);
             this.labelControl4.Name = "labelControl4";
             this.tablePanel1.SetRow(this.labelControl4, 5);
             this.labelControl4.Size = new System.Drawing.Size(205, 50);
@@ -367,7 +367,7 @@
             // labelControl3
             // 
             this.tablePanel1.SetColumn(this.labelControl3, 1);
-            this.labelControl3.Location = new System.Drawing.Point(114, 200);
+            this.labelControl3.Location = new System.Drawing.Point(114, 220);
             this.labelControl3.Name = "labelControl3";
             this.tablePanel1.SetRow(this.labelControl3, 3);
             this.labelControl3.Size = new System.Drawing.Size(123, 50);
@@ -377,7 +377,7 @@
             // labelControl2
             // 
             this.tablePanel1.SetColumn(this.labelControl2, 1);
-            this.labelControl2.Location = new System.Drawing.Point(114, 135);
+            this.labelControl2.Location = new System.Drawing.Point(114, 150);
             this.labelControl2.Name = "labelControl2";
             this.tablePanel1.SetRow(this.labelControl2, 2);
             this.labelControl2.Size = new System.Drawing.Size(75, 50);
@@ -387,7 +387,7 @@
             // labelControl1
             // 
             this.tablePanel1.SetColumn(this.labelControl1, 1);
-            this.labelControl1.Location = new System.Drawing.Point(114, 71);
+            this.labelControl1.Location = new System.Drawing.Point(114, 80);
             this.labelControl1.Name = "labelControl1";
             this.tablePanel1.SetRow(this.labelControl1, 1);
             this.labelControl1.Size = new System.Drawing.Size(106, 50);
