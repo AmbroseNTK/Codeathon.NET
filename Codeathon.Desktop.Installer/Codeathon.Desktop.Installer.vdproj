@@ -3376,7 +3376,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_B98D7932B05747CB81A6316326CA9C71"
             {
             "Name" = "8:#1919"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:ProgramMenuFolder"
@@ -3387,7 +3387,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_DA6B3B1569AB4D658C00F3A34377E4F8"
             {
             "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:DesktopFolder"
@@ -3412,7 +3412,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Codeathon.Desktop"
         "ProductCode" = "8:{F3A38268-4BBF-4035-A8ED-C900A5B5F7E0}"
-        "PackageCode" = "8:{05565F43-F99C-4770-8BC1-93BE1581D7E6}"
+        "PackageCode" = "8:{4ACA548A-3C85-451F-9EA9-2244A2C8494C}"
         "UpgradeCode" = "8:{849D4249-CA03-4E7D-9FC2-454191960E03}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -3532,6 +3532,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1C26DE77F1F9443A9D3CBC86032C520F"
+            {
+            "Name" = "8:Codeathon"
+            "Arguments" = "8:"
+            "Description" = "8:Codeathon for desktop"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_1D7D32BF17A14FE59754257CAC853960"
+            "Folder" = "8:_B98D7932B05747CB81A6316326CA9C71"
+            "WorkingFolder" = "8:_82F262A41EC040AE8C9187F1336318C4"
+            "Icon" = "8:_BDE325CE1FBC4EECAC82EB207731B5E3"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E2A9D73E961647CFA6D4AA757F4168D2"
+            {
+            "Name" = "8:Codeathon"
+            "Arguments" = "8:"
+            "Description" = "8:Codeathon for desktop"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_1D7D32BF17A14FE59754257CAC853960"
+            "Folder" = "8:_DA6B3B1569AB4D658C00F3A34377E4F8"
+            "WorkingFolder" = "8:_82F262A41EC040AE8C9187F1336318C4"
+            "Icon" = "8:_BDE325CE1FBC4EECAC82EB207731B5E3"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {

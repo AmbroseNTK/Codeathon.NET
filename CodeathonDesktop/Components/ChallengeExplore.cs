@@ -61,7 +61,18 @@ namespace Codeathon.Desktop.Components
         }
         private void tileView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            OnSelectedChallenge?.Invoke(challenges[e.FocusedRowHandle]);
+           
+        }
+
+        private void tileView1_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(tileView1.FocusedValue.ToString());
+                Challenge selected = challenges.Where((challenge) => challenge.Id == id).FirstOrDefault();
+                OnSelectedChallenge?.Invoke(selected);
+            }
+            catch { }
         }
     }
 }

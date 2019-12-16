@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
@@ -66,6 +67,7 @@
             this.layoutViewField_ShortDescription = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.winExplorerView1 = new DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutView1)).BeginInit();
@@ -75,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_ShortDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.winExplorerView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tileId
@@ -151,6 +154,9 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode1.RelationName = "Level1";
+            this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.tileView1;
             this.gridControl1.Name = "gridControl1";
@@ -159,7 +165,8 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1,
             this.layoutView1,
-            this.gridView1});
+            this.gridView1,
+            this.winExplorerView1});
             // 
             // tileView1
             // 
@@ -173,7 +180,14 @@
             this.tileViewColumn1});
             this.tileView1.GridControl = this.gridControl1;
             this.tileView1.Name = "tileView1";
-            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(652, 224);
+            this.tileView1.OptionsFind.AlwaysVisible = true;
+            this.tileView1.OptionsTiles.GroupTextPadding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            this.tileView1.OptionsTiles.IndentBetweenGroups = 0;
+            this.tileView1.OptionsTiles.IndentBetweenItems = 0;
+            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(183, 224);
+            this.tileView1.OptionsTiles.LayoutMode = DevExpress.XtraGrid.Views.Tile.TileViewLayoutMode.List;
+            this.tileView1.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tileView1.OptionsTiles.Padding = new System.Windows.Forms.Padding(0);
             this.tileView1.OptionsTiles.RowCount = 0;
             this.tileView1.TileColumns.Add(tableColumnDefinition1);
             this.tileView1.TileColumns.Add(tableColumnDefinition2);
@@ -255,6 +269,7 @@
             this.tileView1.TileTemplate.Add(tileViewItemElement5);
             this.tileView1.TileTemplate.Add(tileViewItemElement6);
             this.tileView1.TileTemplate.Add(tileViewItemElement7);
+            this.tileView1.ItemClick += new DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventHandler(this.tileView1_ItemClick);
             this.tileView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.tileView1_FocusedRowChanged);
             // 
             // layoutView1
@@ -364,7 +379,7 @@
             this.layoutViewField_Title,
             this.layoutViewField_ShortDescription});
             this.layoutViewCard1.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table;
-            this.layoutViewCard1.Name = "layoutViewCard1";
+            this.layoutViewCard1.Name = "layoutViewTemplateCard";
             this.layoutViewCard1.OptionsItemText.TextToControlDistance = 2;
             this.layoutViewCard1.Text = "TemplateCard";
             this.layoutViewCard1.TextLocation = DevExpress.Utils.Locations.Default;
@@ -374,12 +389,17 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
+            // winExplorerView1
+            // 
+            this.winExplorerView1.GridControl = this.gridControl1;
+            this.winExplorerView1.Name = "winExplorerView1";
+            // 
             // ChallengeExplore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gridControl1);
-            //this.Name = "ChallengeExplore";
+           // this.Name = "ChallengeExplore";
             this.Size = new System.Drawing.Size(1268, 779);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
@@ -390,6 +410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_ShortDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.winExplorerView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -416,5 +437,6 @@
         private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard1;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileLastUpdate;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn1;
+        private DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView winExplorerView1;
     }
 }
