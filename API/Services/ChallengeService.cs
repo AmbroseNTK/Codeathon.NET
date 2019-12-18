@@ -250,7 +250,7 @@ namespace Codeathon.API.Services
             }
             try
             {
-                Service<SolutionService>.Use().SubmitSolution(new Solution()
+                Service<SolutionService>.Use().SubmitSolution(challenge, new Solution()
                 {
                     User = Service<AuthData>.Use().Get(),
                     Datetime = DateTime.Now,

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="71606907b4914de99b41edcbb573f897" Name="Diagram1" ShowGrid="true" >
+      <Diagram DiagramId="71606907b4914de99b41edcbb573f897" Name="Diagram1" ShowGrid="true" ZoomLevel="86" >
         <EntityTypeShape EntityType="Codeathon.User" Width="1.875" PointX="3.25" PointY="3.25" />
         <EntityTypeShape EntityType="Codeathon.Profile" Width="1.5" PointX="0.5" PointY="4" />
         <EntityTypeShape EntityType="Codeathon.Category" Width="1.5" PointX="8" PointY="0.75" />

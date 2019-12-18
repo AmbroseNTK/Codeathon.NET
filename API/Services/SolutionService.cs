@@ -28,10 +28,10 @@ namespace Codeathon.API.Services
             return entity.Id;
         }
 
-        public void SubmitSolution(Solution solution)
+        public void SubmitSolution(Challenge challenge, Solution solution)
         {
-            Solution previousSolution = Read((sol) => sol.User.Email == solution.User.Email 
-            && sol.PLanguage.Id == solution.PLanguage.Id).ToList().FirstOrDefault();
+            Solution previousSolution = challenge.ChallengeResults.Where((sol) => sol.User.Email == solution.User.Email 
+            && sol.PLanguage.Id == solution.PLanguage.Id).FirstOrDefault();
 
             if (previousSolution != null)
             {
